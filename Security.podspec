@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "Security"
+  s.name         = "SecurityWrapper"
   s.version      = "1.0"
   s.summary      = "A very simple wrapper for common security implementations in iOS - Sign, Verify, Encrypt, Decrypt."
   s.source       = { :git => "https://github.com/Hassaniiii/Security.git", :branch => "master" }
