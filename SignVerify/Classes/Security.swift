@@ -64,20 +64,15 @@ class Security: NSObject {
         return queryKeychain(ID: id, Type: kSecReturnData) as? Data
     }
     
-    func checkSignVerifySupport(Key id: String) -> Bool {
-        if let key: SecKey = getKey(ID: id) {
-            return SecKeyIsAlgorithmSupported(key, .sign, signAlgo)
-        }
-        return false
-    }
-    
     func sign(Data data: Data, PrivateKey pkey: String) throws -> Data?  {
         var error: Unmanaged<CFError>?
         if let key: SecKey = getKey(ID: pkey) {
-            if let signature = SecKeyCreateSignature(key, signAlgo, data as CFData, &error) {
-                return signature as Data?
+            if SecKeyIsAlgorithmSupported(key, .sign, signAlgo) {
+                if let signature = SecKeyCreateSignature(key, signAlgo, data as CFData, &error) {
+                    return signature as Data?
+                }
+                throw error!.takeRetainedValue() as Error
             }
-            throw error!.takeRetainedValue() as Error
         }
         return nil
     }
@@ -85,10 +80,12 @@ class Security: NSObject {
     func verify(RawData raw: Data, SignedData data: Data, PublicKey pubkey: String) throws -> Bool {
         var error: Unmanaged<CFError>?
         if let key: SecKey = getKey(ID: pubkey) {
-            if SecKeyVerifySignature(key, signAlgo, raw as CFData, data as CFData, &error) {
-                return true
+            if SecKeyIsAlgorithmSupported(key, .verify, signAlgo) {
+                if SecKeyVerifySignature(key, signAlgo, raw as CFData, data as CFData, &error) {
+                    return true
+                }
+                throw error!.takeRetainedValue() as Error
             }
-            throw error!.takeRetainedValue() as Error
         }
         return false
     }
@@ -96,10 +93,12 @@ class Security: NSObject {
     func encrypt(Plain text: Data, Key key: String) throws -> Data? {
         var error: Unmanaged<CFError>?
         if let key: SecKey = getKey(ID: key) {
-            if let cipher = SecKeyCreateEncryptedData(key, encAlgo, text as CFData, &error) {
-                return cipher as Data
+            if SecKeyIsAlgorithmSupported(key, .encrypt, encAlgo) {
+                if let cipher = SecKeyCreateEncryptedData(key, encAlgo, text as CFData, &error) {
+                    return cipher as Data
+                }
+                throw error!.takeRetainedValue()
             }
-            throw error!.takeRetainedValue()
         }
         return nil
     }
@@ -107,10 +106,12 @@ class Security: NSObject {
     func decrypt(Cipher text: Data, Key key: String) throws -> Data? {
         var error: Unmanaged<CFError>?
         if let key: SecKey = getKey(ID: key) {
-            if let plain = SecKeyCreateDecryptedData(key, encAlgo, text as CFData, &error) {
-                return plain as Data
+            if SecKeyIsAlgorithmSupported(key, .decrypt, encAlgo) {
+                if let plain = SecKeyCreateDecryptedData(key, encAlgo, text as CFData, &error) {
+                    return plain as Data
+                }
+                throw error!.takeRetainedValue()
             }
-            throw error!.takeRetainedValue()
         }
         return nil
     }

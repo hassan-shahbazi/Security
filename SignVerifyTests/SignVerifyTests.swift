@@ -49,18 +49,7 @@ class SignVerifyTests: XCTestCase {
         XCTAssertNotNil(pkey)
     }
     
-    func test_4_signSupport() {
-        let security = Security(SignAlgorithm: .ecdsaSignatureDigestX962SHA256)
-        XCTAssertTrue(security.checkSignVerifySupport(Key: "PrivateKeyID"))
-        
-        let security2 = Security(SignAlgorithm: .ecdhKeyExchangeCofactorX963SHA1)
-        XCTAssertFalse(security2.checkSignVerifySupport(Key: "PrivateKeyID"))
-        
-        let security3 = Security(SignAlgorithm: .ecdsaSignatureDigestX962SHA1)
-        XCTAssertTrue(security3.checkSignVerifySupport(Key: "PrivateKeyID"))
-    }
-    
-    func test_5_signData() {
+    func test_4_signData() {
         let security = Security(SignAlgorithm: .ecdsaSignatureDigestX962SHA512)
         do {
             let sign = try security.sign(Data: rawData, PrivateKey: "PrivateKeyID")
@@ -72,7 +61,7 @@ class SignVerifyTests: XCTestCase {
         }
     }
 
-    func test_6_verifySign() {
+    func test_5_verifySign() {
         let security = Security(SignAlgorithm: .ecdsaSignatureDigestX962SHA512)
         do {
             let sign = try security.sign(Data: rawData, PrivateKey: "PrivateKeyID")
@@ -87,7 +76,7 @@ class SignVerifyTests: XCTestCase {
         }
     }
 
-    func test_7_encrypt() {
+    func test_6_encrypt() {
         let security = Security()
         do {
             let cipher = try security.encrypt(Plain: plainText, Key: "PublicKeyID")
@@ -100,7 +89,7 @@ class SignVerifyTests: XCTestCase {
         }
     }
     
-    func test_8_decrypt() {
+    func test_7_decrypt() {
         let security = Security()
         do {
             let cipher = try security.encrypt(Plain: plainText, Key: "PublicKeyID")
