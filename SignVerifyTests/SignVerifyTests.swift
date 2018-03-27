@@ -13,6 +13,7 @@ import Security
 class SignVerifyTests: XCTestCase {
     
     let rawData = "t5$A1ZIPdPbyi*)n-9vDJKPfoYW%Ld35VIJ8QBgn$rCUtiRhlqWdx2Pe^O-qL%R&".data(using: .utf8)!
+    let plainText = "Hassan Shahbazi".data(using: .utf8)!
     
     override func setUp() {
         super.setUp()
@@ -79,6 +80,35 @@ class SignVerifyTests: XCTestCase {
             
             let verify = try security.verify(RawData: rawData, SignedData: sign!, PublicKey: "PublicKeyID")
             XCTAssertTrue(verify)
+        }
+        catch let error {
+            print(error)
+            XCTAssertFalse(true)
+        }
+    }
+
+    func test_7_encrypt() {
+        let security = Security()
+        do {
+            let cipher = try security.encrypt(Plain: plainText, Key: "PublicKeyID")
+            
+            XCTAssertNotNil(cipher)
+        }
+        catch let error {
+            print(error)
+            XCTAssertFalse(true)
+        }
+    }
+    
+    func test_8_decrypt() {
+        let security = Security()
+        do {
+            let cipher = try security.encrypt(Plain: plainText, Key: "PublicKeyID")
+            XCTAssertNotNil(cipher)
+            
+            let plain = try security.decrypt(Cipher: cipher!, Key: "PrivateKeyID")
+            XCTAssertNotNil(plain)
+            XCTAssertEqual(plain, plainText)
         }
         catch let error {
             print(error)

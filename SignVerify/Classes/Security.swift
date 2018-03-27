@@ -14,17 +14,20 @@ class Security: NSObject {
     private var keyAlgo:    CFString!
     private var keySize:    NSNumber!
     private var signAlgo:   SecKeyAlgorithm!
+    private var encAlgo:    SecKeyAlgorithm!
     private var keyAccess:  CFString!
     
     init(KeyType:           CFString = kSecAttrKeyTypeEC,
          KeySize:           Int = 256,
          SignAlgorithm:     SecKeyAlgorithm = .ecdsaSignatureDigestX962SHA256,
+         EncryptAlgorithm:  SecKeyAlgorithm = .eciesEncryptionStandardX963SHA256AESGCM,
          KeycahinAccess:    CFString = kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly) {
         
         super.init()
         keyAlgo     = KeyType
         keySize     = NSNumber(value: KeySize)
         signAlgo    = SignAlgorithm
+        encAlgo     = EncryptAlgorithm
         keyAccess   = KeycahinAccess
     }
     
@@ -90,7 +93,27 @@ class Security: NSObject {
         return false
     }
 
-
+    func encrypt(Plain text: Data, Key key: String) throws -> Data? {
+        var error: Unmanaged<CFError>?
+        if let key: SecKey = getKey(ID: key) {
+            if let cipher = SecKeyCreateEncryptedData(key, encAlgo, text as CFData, &error) {
+                return cipher as Data
+            }
+            throw error!.takeRetainedValue()
+        }
+        return nil
+    }
+    
+    func decrypt(Cipher text: Data, Key key: String) throws -> Data? {
+        var error: Unmanaged<CFError>?
+        if let key: SecKey = getKey(ID: key) {
+            if let plain = SecKeyCreateDecryptedData(key, encAlgo, text as CFData, &error) {
+                return plain as Data
+            }
+            throw error!.takeRetainedValue()
+        }
+        return nil
+    }
 }
 
 
