@@ -104,4 +104,61 @@ class SignVerifyTests: XCTestCase {
             XCTAssertFalse(true)
         }
     }
+
+    func test_8_hash() {
+        let hash = Hash()
+        let plainData = "Hassan Shahbazi".data(using: .utf8)!
+        
+        let MD5 = hash.hash(Algorithm: .MD5, Message: plainData)
+        XCTAssertNotNil(MD5)
+        XCTAssertEqual("A90FFF72E4FFDD1520AAF36852B9A5AF".lowercased(), MD5?.hex)
+        
+        let SHA1 = hash.hash(Algorithm: .SHA1, Message: plainData)
+        XCTAssertNotNil(SHA1)
+        XCTAssertEqual("E2DCD09FB85B41EAA2283B9DD0DC1CD251CB5340".lowercased(), SHA1?.hex)
+        
+        let SHA256 = hash.hash(Algorithm: .SHA256, Message: plainData)
+        XCTAssertNotNil(SHA256)
+        XCTAssertEqual("CF7735B36C1E46FDC0F9C5019C77BB14D9B3B4B7C07D56905153D116C8A268BF".lowercased(), SHA256?.hex)
+        
+        let SHA512 = hash.hash(Algorithm: .SHA512, Message: plainData)
+        XCTAssertNotNil(SHA512)
+        XCTAssertEqual("F3A5378AA5B123B5C28BD772CB8CF5C7C6A4BB09CA6E1A13E467011D752EE2822E8D6F010F217C59D3783713AB0510740129EA14BC300357EAFA97EC64BD9619".lowercased(), SHA512?.hex)
+    }
+
+    func test_9_hmac() {
+        let hash = Hash()
+        let plainData = "Hassan Shahbazi".data(using: .utf8)!
+        let plainKey = "Key".data(using: .utf8)!
+        
+        let SHA1 = hash.hmac(Alorithm: .SHA1, Message: plainData, Key: plainKey)
+        XCTAssertNotNil(SHA1)
+        XCTAssertEqual("65691086e6815f3f677761102dedba694fcd940d", SHA1!.hex)
+        
+        let SHA256 = hash.hmac(Alorithm: .SHA256, Message: plainData, Key: plainKey)
+        XCTAssertNotNil(SHA256)
+        XCTAssertEqual("3c1077f559cc469db0ef6ecc508cf83e7bebf59c5ff7ea0279b6f74c34f7529c", SHA256!.hex)
+        
+        let SHA512 = hash.hmac(Alorithm: .SHA512, Message: plainData, Key: plainKey)
+        XCTAssertNotNil(SHA512)
+        XCTAssertEqual("82f5f1f1e0ed2bc6386e1c786787c682dc892714ce142449a62eff1c41154857ce16efa3046a921c9ee0ac74d8e2151ceeecfa56b11d6fa88d1acf9fe4dcc1c7", SHA512!.hex)
+    }
 }
+
+extension Data {
+    public var bytes: [UInt8] {
+        return [UInt8](self)
+    }
+    
+    public var hex: String {
+        var str = ""
+        for byte in self.bytes {
+            str = str.appendingFormat("%02x", UInt(byte))
+        }
+        return str
+    }
+}
+
+
+
+
