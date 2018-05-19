@@ -9,7 +9,7 @@
 import UIKit
 import Security
 
-class Security: NSObject {
+public class Security: NSObject {
     
     private var keyAlgo:    CFString!
     private var keySize:    NSNumber!
