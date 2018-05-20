@@ -69,7 +69,7 @@ public enum HashAlgorithm {
     }
 }
 
-class Hash: NSObject {
+public class Hash: NSObject {
     private var algorithm: HashAlgorithm!
 
     override init() {
