@@ -81,12 +81,12 @@ public class Hash: NSObject {
         self.algorithm = algorithm
     }
 
-    public func hash(Algorithm algo: HashAlgorithm, Message message: Data) -> Data? {
-        var digestData = Data(count: Int(algo.DigestLength))
+    public func hash(Message message: Data) -> Data? {
+        var digestData = Data(count: Int(algorithm.DigestLength))
 
         _ = digestData.withUnsafeMutableBytes {digestBytes in
             message.withUnsafeBytes { messageBytes in
-                algo.object.hash(data: messageBytes, len: CC_LONG(message.count), md: digestBytes)
+                algorithm.object.hash(data: messageBytes, len: CC_LONG(message.count), md: digestBytes)
             }
         }
         return digestData
@@ -94,13 +94,13 @@ public class Hash: NSObject {
 
     internal func hash(data: UnsafeRawPointer, len: CC_LONG, md: UnsafeMutablePointer<UInt8>) {}
 
-    public func hmac(Alorithm algo: HashAlgorithm, Message message: Data, Key key:Data) -> Data? {
-        var macData = Data(count: Int(algo.DigestLength))
+    public func hmac(Message message: Data, Key key:Data) -> Data? {
+        var macData = Data(count: Int(algorithm.DigestLength))
 
         macData.withUnsafeMutableBytes { macBytes in
             message.withUnsafeBytes { messageBytes in
                 key.withUnsafeBytes { keyBytes in
-                    CCHmac(CCHmacAlgorithm(algo.Algorithm), keyBytes, key.count, messageBytes, message.count, macBytes)
+                    CCHmac(CCHmacAlgorithm(algorithm.Algorithm), keyBytes, key.count, messageBytes, message.count, macBytes)
                 }
             }
         }
