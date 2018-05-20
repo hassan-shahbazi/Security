@@ -67,7 +67,7 @@ Pod::Spec.new do |s|
   # s.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "10.0"
+  # s.ios.deployment_target = "10.0"
   # s.osx.deployment_target = "10.7"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
@@ -137,8 +137,7 @@ Pod::Spec.new do |s|
   s.preserve_paths = 'CocoaPods/**/*'
   s.pod_target_xcconfig = {
     'SWIFT_INCLUDE_PATHS[sdk=iphoneos*]'         => '$(PODS_ROOT)/SecurityWrapper/CocoaPods/iphoneos',
-    'SWIFT_INCLUDE_PATHS[sdk=iphonesimulator*]'  => '$(PODS_ROOT)/SecurityWrapper/CocoaPods/iphonesimulator',
-    'SWIFT_VERSION' => '4.0'
+    'SWIFT_INCLUDE_PATHS[sdk=iphonesimulator*]'  => '$(PODS_ROOT)/SecurityWrapper/CocoaPods/iphonesimulator'
   }
 
 end
