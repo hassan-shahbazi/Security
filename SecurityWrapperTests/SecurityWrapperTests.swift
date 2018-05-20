@@ -1,16 +1,16 @@
 //
-//  SignVerifyTests.swift
-//  SignVerifyTests
+//  SecurityWrapperTests.swift
+//  SecurityWrapperTests
 //
-//  Created by Hassan Shahbazi on 2018-03-27.
+//  Created by Hassan Shahbazi on 2018-05-20.
 //  Copyright © 2018 Hassan Shahbazi. All rights reserved.
 //
 
 import XCTest
 import Security
-@testable import SignVerify
+@testable import SecurityWrapper
 
-class SignVerifyTests: XCTestCase {
+class SecurityWrapperTests: XCTestCase {
     
     let rawData = "t5$A1ZIPdPbyi*)n-9vDJKPfoYW%Ld35VIJ8QBgn$rCUtiRhlqWdx2Pe^O-qL%R&".data(using: .utf8)!
     let plainText = "Hassan Shahbazi".data(using: .utf8)!
@@ -24,7 +24,7 @@ class SignVerifyTests: XCTestCase {
     }
     
     func test_1_keyGeneration() {
-        let security = Security()
+        let security = Security(KeycahinAccess: kSecAttrAccessibleAlways)
         let (pubKey, pKey) = security.generateKeyPair(PublicKeyID: "PublicKeyID", PrivateKeyID: "PrivateKeyID")
         
         XCTAssertNotNil(pubKey)
@@ -32,7 +32,7 @@ class SignVerifyTests: XCTestCase {
     }
     
     func test_2_keyData() {
-        let security = Security()
+        let security = Security(KeycahinAccess: kSecAttrAccessibleAlways)
         let pubkey: Data? = security.getKey(ID: "PublicKeyID")
         let pkey: Data? = security.getKey(ID: "PrivateKeyID")
         
@@ -41,7 +41,7 @@ class SignVerifyTests: XCTestCase {
     }
     
     func test_3_keyRef() {
-        let security = Security()
+        let security = Security(KeycahinAccess: kSecAttrAccessibleAlways)
         let pubkey: SecKey? = security.getKey(ID: "PublicKeyID")
         let pkey: SecKey? = security.getKey(ID: "PrivateKeyID")
         
@@ -50,7 +50,7 @@ class SignVerifyTests: XCTestCase {
     }
     
     func test_4_signData() {
-        let security = Security(SignAlgorithm: .ecdsaSignatureDigestX962SHA512)
+        let security = Security(SignAlgorithm: .ecdsaSignatureDigestX962SHA512, KeycahinAccess: kSecAttrAccessibleAlways)
         do {
             let sign = try security.sign(Data: rawData, PrivateKey: "PrivateKeyID")
             XCTAssertNotNil(sign)
@@ -60,9 +60,9 @@ class SignVerifyTests: XCTestCase {
             XCTAssertFalse(true)
         }
     }
-
+    
     func test_5_verifySign() {
-        let security = Security(SignAlgorithm: .ecdsaSignatureDigestX962SHA512)
+        let security = Security(SignAlgorithm: .ecdsaSignatureDigestX962SHA512, KeycahinAccess: kSecAttrAccessibleAlways)
         do {
             let sign = try security.sign(Data: rawData, PrivateKey: "PrivateKeyID")
             XCTAssertNotNil(sign)
@@ -75,9 +75,9 @@ class SignVerifyTests: XCTestCase {
             XCTAssertFalse(true)
         }
     }
-
+    
     func test_6_encrypt() {
-        let security = Security()
+        let security = Security(KeycahinAccess: kSecAttrAccessibleAlways)
         do {
             let cipher = try security.encrypt(Plain: plainText, Key: "PublicKeyID")
             
@@ -90,7 +90,7 @@ class SignVerifyTests: XCTestCase {
     }
     
     func test_7_decrypt() {
-        let security = Security()
+        let security = Security(KeycahinAccess: kSecAttrAccessibleAlways)
         do {
             let cipher = try security.encrypt(Plain: plainText, Key: "PublicKeyID")
             XCTAssertNotNil(cipher)
@@ -104,7 +104,7 @@ class SignVerifyTests: XCTestCase {
             XCTAssertFalse(true)
         }
     }
-
+    
     func test_8_hash() {
         let hash = Hash()
         let plainData = "Hassan Shahbazi".data(using: .utf8)!
@@ -125,7 +125,7 @@ class SignVerifyTests: XCTestCase {
         XCTAssertNotNil(SHA512)
         XCTAssertEqual("F3A5378AA5B123B5C28BD772CB8CF5C7C6A4BB09CA6E1A13E467011D752EE2822E8D6F010F217C59D3783713AB0510740129EA14BC300357EAFA97EC64BD9619".lowercased(), SHA512?.hex)
     }
-
+    
     func test_9_hmac() {
         let hash = Hash()
         let plainData = "Hassan Shahbazi".data(using: .utf8)!
@@ -158,7 +158,3 @@ extension Data {
         return str
     }
 }
-
-
-
-

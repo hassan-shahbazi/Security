@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CCommonCrypto
 
 public enum HashAlgorithm {
     case SHA1
@@ -15,7 +16,7 @@ public enum HashAlgorithm {
     case SHA384
     case SHA512
     case MD5
-    
+
     var Algorithm: Int {
         switch self {
             case .SHA1:
@@ -32,7 +33,7 @@ public enum HashAlgorithm {
                 return kCCHmacAlgMD5
         }
     }
-    
+
     var DigestLength: Int32 {
         switch self {
             case .SHA1:
@@ -70,19 +71,19 @@ public enum HashAlgorithm {
 
 class Hash: NSObject {
     private var algorithm: HashAlgorithm!
-    
+
     override init() {
         super.init()
     }
-    
+
     public init(_ algorithm: HashAlgorithm) {
         super.init()
         self.algorithm = algorithm
     }
-    
+
     public func hash(Algorithm algo: HashAlgorithm, Message message: Data) -> Data? {
         var digestData = Data(count: Int(algo.DigestLength))
-        
+
         _ = digestData.withUnsafeMutableBytes {digestBytes in
             message.withUnsafeBytes { messageBytes in
                 algo.object.hash(data: messageBytes, len: CC_LONG(message.count), md: digestBytes)
@@ -90,12 +91,12 @@ class Hash: NSObject {
         }
         return digestData
     }
-    
+
     internal func hash(data: UnsafeRawPointer, len: CC_LONG, md: UnsafeMutablePointer<UInt8>) {}
-    
+
     public func hmac(Alorithm algo: HashAlgorithm, Message message: Data, Key key:Data) -> Data? {
         var macData = Data(count: Int(algo.DigestLength))
-        
+
         macData.withUnsafeMutableBytes { macBytes in
             message.withUnsafeBytes { messageBytes in
                 key.withUnsafeBytes { keyBytes in

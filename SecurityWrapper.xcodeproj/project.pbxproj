@@ -7,52 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C6124F7206A243A0089DF68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6124F5206A243A0089DF68 /* Main.storyboard */; };
-		5C6124F9206A243A0089DF68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6124F8206A243A0089DF68 /* Assets.xcassets */; };
-		5C6124FC206A243A0089DF68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6124FA206A243A0089DF68 /* LaunchScreen.storyboard */; };
-		5C612507206A243A0089DF68 /* SignVerifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C612506206A243A0089DF68 /* SignVerifyTests.swift */; };
-		5C612513206A24680089DF68 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C612512206A24680089DF68 /* Security.swift */; };
-		5C612518206A74760089DF68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C612517206A74760089DF68 /* AppDelegate.swift */; };
-		5C6FCABC20B02F890052FC23 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCABB20B02F890052FC23 /* Hash.swift */; };
+		5C6FCAF920B155A20052FC23 /* SecurityWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; };
+		5C6FCB0020B155A30052FC23 /* SecurityWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCAFF20B155A30052FC23 /* SecurityWrapperTests.swift */; };
+		5C6FCB0220B155A30052FC23 /* SecurityWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6FCAF220B155A20052FC23 /* SecurityWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C6FCB1E20B15BE80052FC23 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB1C20B15BE70052FC23 /* Hash.swift */; };
+		5C6FCB1F20B15BE80052FC23 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB1D20B15BE70052FC23 /* Security.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5C612503206A243A0089DF68 /* PBXContainerItemProxy */ = {
+		5C6FCAFA20B155A20052FC23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5C6124E6206A243A0089DF68 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5C6124ED206A243A0089DF68;
-			remoteInfo = SignVerify;
+			remoteGlobalIDString = 5C6FCAEF20B155A10052FC23;
+			remoteInfo = SecurityWrapper;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5C6124EE206A243A0089DF68 /* SignVerify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignVerify.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C6124F6206A243A0089DF68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5C6124F8206A243A0089DF68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5C6124FB206A243A0089DF68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5C6124FD206A243A0089DF68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C612502206A243A0089DF68 /* SignVerifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SignVerifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C612506206A243A0089DF68 /* SignVerifyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignVerifyTests.swift; sourceTree = "<group>"; };
-		5C612508206A243A0089DF68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C612512206A24680089DF68 /* Security.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
-		5C612517206A74760089DF68 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5C6FCAB820B024F10052FC23 /* SignVerify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SignVerify-Bridging-Header.h"; sourceTree = "<group>"; };
-		5C6FCABB20B02F890052FC23 /* Hash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
+		5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SecurityWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C6FCAF220B155A20052FC23 /* SecurityWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecurityWrapper.h; sourceTree = "<group>"; };
+		5C6FCAF320B155A20052FC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C6FCAF820B155A20052FC23 /* SecurityWrapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecurityWrapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C6FCAFF20B155A30052FC23 /* SecurityWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityWrapperTests.swift; sourceTree = "<group>"; };
+		5C6FCB0120B155A30052FC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C6FCB1C20B15BE70052FC23 /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
+		5C6FCB1D20B15BE70052FC23 /* Security.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
+		5C6FCB2020B15BEC0052FC23 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5C6124EB206A243A0089DF68 /* Frameworks */ = {
+		5C6FCAEC20B155A10052FC23 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C6124FF206A243A0089DF68 /* Frameworks */ = {
+		5C6FCAF520B155A20052FC23 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6FCAF920B155A20052FC23 /* SecurityWrapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +58,8 @@
 		5C6124E5206A243A0089DF68 = {
 			isa = PBXGroup;
 			children = (
-				5C6124F0206A243A0089DF68 /* SignVerify */,
-				5C612505206A243A0089DF68 /* SignVerifyTests */,
+				5C6FCAF120B155A20052FC23 /* SecurityWrapper */,
+				5C6FCAFE20B155A30052FC23 /* SecurityWrapperTests */,
 				5C6124EF206A243A0089DF68 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,88 +67,97 @@
 		5C6124EF206A243A0089DF68 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5C6124EE206A243A0089DF68 /* SignVerify.app */,
-				5C612502206A243A0089DF68 /* SignVerifyTests.xctest */,
+				5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */,
+				5C6FCAF820B155A20052FC23 /* SecurityWrapperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5C6124F0206A243A0089DF68 /* SignVerify */ = {
+		5C6FCAF120B155A20052FC23 /* SecurityWrapper */ = {
 			isa = PBXGroup;
 			children = (
-				5C612511206A244C0089DF68 /* Classes */,
-				5C612517206A74760089DF68 /* AppDelegate.swift */,
-				5C6124FD206A243A0089DF68 /* Info.plist */,
-				5C612514206A725B0089DF68 /* Other */,
+				5C6FCB1A20B15BC90052FC23 /* Classes */,
+				5C6FCAF220B155A20052FC23 /* SecurityWrapper.h */,
+				5C6FCAF320B155A20052FC23 /* Info.plist */,
 			);
-			path = SignVerify;
+			path = SecurityWrapper;
 			sourceTree = "<group>";
 		};
-		5C612505206A243A0089DF68 /* SignVerifyTests */ = {
+		5C6FCAFE20B155A30052FC23 /* SecurityWrapperTests */ = {
 			isa = PBXGroup;
 			children = (
-				5C612506206A243A0089DF68 /* SignVerifyTests.swift */,
-				5C612508206A243A0089DF68 /* Info.plist */,
+				5C6FCAFF20B155A30052FC23 /* SecurityWrapperTests.swift */,
+				5C6FCB0120B155A30052FC23 /* Info.plist */,
 			);
-			path = SignVerifyTests;
+			path = SecurityWrapperTests;
 			sourceTree = "<group>";
 		};
-		5C612511206A244C0089DF68 /* Classes */ = {
+		5C6FCB1A20B15BC90052FC23 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5C6FCAB820B024F10052FC23 /* SignVerify-Bridging-Header.h */,
-				5C612512206A24680089DF68 /* Security.swift */,
-				5C6FCABB20B02F890052FC23 /* Hash.swift */,
+				5C6FCB1B20B15BCF0052FC23 /* CCommonCrypto */,
+				5C6FCB1C20B15BE70052FC23 /* Hash.swift */,
+				5C6FCB1D20B15BE70052FC23 /* Security.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		5C612514206A725B0089DF68 /* Other */ = {
+		5C6FCB1B20B15BCF0052FC23 /* CCommonCrypto */ = {
 			isa = PBXGroup;
 			children = (
-				5C6124F5206A243A0089DF68 /* Main.storyboard */,
-				5C6124F8206A243A0089DF68 /* Assets.xcassets */,
-				5C6124FA206A243A0089DF68 /* LaunchScreen.storyboard */,
+				5C6FCB2020B15BEC0052FC23 /* module.modulemap */,
 			);
-			path = Other;
+			path = CCommonCrypto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXNativeTarget section */
-		5C6124ED206A243A0089DF68 /* SignVerify */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5C61250B206A243A0089DF68 /* Build configuration list for PBXNativeTarget "SignVerify" */;
-			buildPhases = (
-				5C6124EA206A243A0089DF68 /* Sources */,
-				5C6124EB206A243A0089DF68 /* Frameworks */,
-				5C6124EC206A243A0089DF68 /* Resources */,
+/* Begin PBXHeadersBuildPhase section */
+		5C6FCAED20B155A10052FC23 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C6FCB0220B155A30052FC23 /* SecurityWrapper.h in Headers */,
 			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SignVerify;
-			productName = SignVerify;
-			productReference = 5C6124EE206A243A0089DF68 /* SignVerify.app */;
-			productType = "com.apple.product-type.application";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C612501206A243A0089DF68 /* SignVerifyTests */ = {
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5C6FCAEF20B155A10052FC23 /* SecurityWrapper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C61250E206A243A0089DF68 /* Build configuration list for PBXNativeTarget "SignVerifyTests" */;
+			buildConfigurationList = 5C6FCB0820B155A30052FC23 /* Build configuration list for PBXNativeTarget "SecurityWrapper" */;
 			buildPhases = (
-				5C6124FE206A243A0089DF68 /* Sources */,
-				5C6124FF206A243A0089DF68 /* Frameworks */,
-				5C612500206A243A0089DF68 /* Resources */,
+				5C6FCAEB20B155A10052FC23 /* Sources */,
+				5C6FCAEC20B155A10052FC23 /* Frameworks */,
+				5C6FCAED20B155A10052FC23 /* Headers */,
+				5C6FCAEE20B155A10052FC23 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5C612504206A243A0089DF68 /* PBXTargetDependency */,
 			);
-			name = SignVerifyTests;
-			productName = SignVerifyTests;
-			productReference = 5C612502206A243A0089DF68 /* SignVerifyTests.xctest */;
+			name = SecurityWrapper;
+			productName = SecurityWrapper;
+			productReference = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5C6FCAF720B155A20052FC23 /* SecurityWrapperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C6FCB0B20B155A30052FC23 /* Build configuration list for PBXNativeTarget "SecurityWrapperTests" */;
+			buildPhases = (
+				5C6FCAF420B155A20052FC23 /* Sources */,
+				5C6FCAF520B155A20052FC23 /* Frameworks */,
+				5C6FCAF620B155A20052FC23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C6FCAFB20B155A20052FC23 /* PBXTargetDependency */,
+			);
+			name = SecurityWrapperTests;
+			productName = SecurityWrapperTests;
+			productReference = 5C6FCAF820B155A20052FC23 /* SecurityWrapperTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -161,23 +166,22 @@
 		5C6124E6206A243A0089DF68 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Hassan Shahbazi";
 				TargetAttributes = {
-					5C6124ED206A243A0089DF68 = {
-						CreatedOnToolsVersion = 9.2;
+					5C6FCAEF20B155A10052FC23 = {
+						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
-					5C612501206A243A0089DF68 = {
-						CreatedOnToolsVersion = 9.2;
+					5C6FCAF720B155A20052FC23 = {
+						CreatedOnToolsVersion = 9.3;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 5C6124ED206A243A0089DF68;
 					};
 				};
 			};
-			buildConfigurationList = 5C6124E9206A243A0089DF68 /* Build configuration list for PBXProject "SignVerify" */;
+			buildConfigurationList = 5C6124E9206A243A0089DF68 /* Build configuration list for PBXProject "SecurityWrapper" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -190,24 +194,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5C6124ED206A243A0089DF68 /* SignVerify */,
-				5C612501206A243A0089DF68 /* SignVerifyTests */,
+				5C6FCAEF20B155A10052FC23 /* SecurityWrapper */,
+				5C6FCAF720B155A20052FC23 /* SecurityWrapperTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5C6124EC206A243A0089DF68 /* Resources */ = {
+		5C6FCAEE20B155A10052FC23 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C6124FC206A243A0089DF68 /* LaunchScreen.storyboard in Resources */,
-				5C6124F9206A243A0089DF68 /* Assets.xcassets in Resources */,
-				5C6124F7206A243A0089DF68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C612500206A243A0089DF68 /* Resources */ = {
+		5C6FCAF620B155A20052FC23 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -217,52 +218,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5C6124EA206A243A0089DF68 /* Sources */ = {
+		5C6FCAEB20B155A10052FC23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C612518206A74760089DF68 /* AppDelegate.swift in Sources */,
-				5C612513206A24680089DF68 /* Security.swift in Sources */,
-				5C6FCABC20B02F890052FC23 /* Hash.swift in Sources */,
+				5C6FCB1E20B15BE80052FC23 /* Hash.swift in Sources */,
+				5C6FCB1F20B15BE80052FC23 /* Security.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C6124FE206A243A0089DF68 /* Sources */ = {
+		5C6FCAF420B155A20052FC23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C612507206A243A0089DF68 /* SignVerifyTests.swift in Sources */,
+				5C6FCB0020B155A30052FC23 /* SecurityWrapperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5C612504206A243A0089DF68 /* PBXTargetDependency */ = {
+		5C6FCAFB20B155A20052FC23 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5C6124ED206A243A0089DF68 /* SignVerify */;
-			targetProxy = 5C612503206A243A0089DF68 /* PBXContainerItemProxy */;
+			target = 5C6FCAEF20B155A10052FC23 /* SecurityWrapper */;
+			targetProxy = 5C6FCAFA20B155A20052FC23 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		5C6124F5206A243A0089DF68 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5C6124F6206A243A0089DF68 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		5C6124FA206A243A0089DF68 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5C6124FB206A243A0089DF68 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5C612509206A243A0089DF68 /* Debug */ = {
@@ -376,79 +357,103 @@
 			};
 			name = Release;
 		};
-		5C61250C206A243A0089DF68 /* Debug */ = {
+		5C6FCB0920B155A30052FC23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 92TDT63R6P;
-				INFOPLIST_FILE = "$(SRCROOT)/SignVerify/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hassaniiii.SignVerify;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SignVerify/Classes/SignVerify-Bridging-Header.h";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SecurityWrapper/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vancosys.SecurityWrapper;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/SecurityWrapper/Classes/CCommonCrypto";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		5C61250D206A243A0089DF68 /* Release */ = {
+		5C6FCB0A20B155A30052FC23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 92TDT63R6P;
-				INFOPLIST_FILE = "$(SRCROOT)/SignVerify/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hassaniiii.SignVerify;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SignVerify/Classes/SignVerify-Bridging-Header.h";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = SecurityWrapper/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vancosys.SecurityWrapper;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/SecurityWrapper/Classes/CCommonCrypto";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		5C61250F206A243A0089DF68 /* Debug */ = {
+		5C6FCB0C20B155A30052FC23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 92TDT63R6P;
-				INFOPLIST_FILE = SignVerifyTests/Info.plist;
+				DEVELOPMENT_TEAM = 4A6ZQ29Y2F;
+				INFOPLIST_FILE = SecurityWrapperTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hassaniiii.SignVerifyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vancosys.SecurityWrapperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Classes/CCommonCrypto";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SignVerify.app/SignVerify";
 			};
 			name = Debug;
 		};
-		5C612510206A243A0089DF68 /* Release */ = {
+		5C6FCB0D20B155A30052FC23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 92TDT63R6P;
-				INFOPLIST_FILE = SignVerifyTests/Info.plist;
+				DEVELOPMENT_TEAM = 4A6ZQ29Y2F;
+				INFOPLIST_FILE = SecurityWrapperTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hassaniiii.SignVerifyTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vancosys.SecurityWrapperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Classes/CCommonCrypto";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SignVerify.app/SignVerify";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5C6124E9206A243A0089DF68 /* Build configuration list for PBXProject "SignVerify" */ = {
+		5C6124E9206A243A0089DF68 /* Build configuration list for PBXProject "SecurityWrapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C612509206A243A0089DF68 /* Debug */,
@@ -457,20 +462,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C61250B206A243A0089DF68 /* Build configuration list for PBXNativeTarget "SignVerify" */ = {
+		5C6FCB0820B155A30052FC23 /* Build configuration list for PBXNativeTarget "SecurityWrapper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5C61250C206A243A0089DF68 /* Debug */,
-				5C61250D206A243A0089DF68 /* Release */,
+				5C6FCB0920B155A30052FC23 /* Debug */,
+				5C6FCB0A20B155A30052FC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C61250E206A243A0089DF68 /* Build configuration list for PBXNativeTarget "SignVerifyTests" */ = {
+		5C6FCB0B20B155A30052FC23 /* Build configuration list for PBXNativeTarget "SecurityWrapperTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5C61250F206A243A0089DF68 /* Debug */,
-				5C612510206A243A0089DF68 /* Release */,
+				5C6FCB0C20B155A30052FC23 /* Debug */,
+				5C6FCB0D20B155A30052FC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
