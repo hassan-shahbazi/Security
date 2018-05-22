@@ -12,6 +12,12 @@
 		5C6FCB0220B155A30052FC23 /* SecurityWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6FCAF220B155A20052FC23 /* SecurityWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C6FCB1E20B15BE80052FC23 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB1C20B15BE70052FC23 /* Hash.swift */; };
 		5C6FCB1F20B15BE80052FC23 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB1D20B15BE70052FC23 /* Security.swift */; };
+		5C6FCB3020B3F81C0052FC23 /* HashingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB2F20B3F81C0052FC23 /* HashingTests.swift */; };
+		5C6FCB3E20B3FB630052FC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB3D20B3FB630052FC23 /* AppDelegate.swift */; };
+		5C6FCB4020B3FB630052FC23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB3F20B3FB630052FC23 /* ViewController.swift */; };
+		5C6FCB4320B3FB630052FC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6FCB4120B3FB630052FC23 /* Main.storyboard */; };
+		5C6FCB4520B3FB660052FC23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6FCB4420B3FB660052FC23 /* Assets.xcassets */; };
+		5C6FCB4820B3FB660052FC23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6FCB4620B3FB660052FC23 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -21,6 +27,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5C6FCAEF20B155A10052FC23;
 			remoteInfo = SecurityWrapper;
+		};
+		5C6FCB5B20B3FB8A0052FC23 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C6124E6206A243A0089DF68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C6FCB3A20B3FB630052FC23;
+			remoteInfo = SecurityWrapperSample;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -34,6 +47,14 @@
 		5C6FCB1C20B15BE70052FC23 /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
 		5C6FCB1D20B15BE70052FC23 /* Security.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
 		5C6FCB2020B15BEC0052FC23 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		5C6FCB2F20B3F81C0052FC23 /* HashingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashingTests.swift; sourceTree = "<group>"; };
+		5C6FCB3B20B3FB630052FC23 /* SecurityWrapperSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecurityWrapperSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C6FCB3D20B3FB630052FC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5C6FCB3F20B3FB630052FC23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5C6FCB4220B3FB630052FC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5C6FCB4420B3FB660052FC23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C6FCB4720B3FB660052FC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5C6FCB4920B3FB660052FC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,12 +73,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5C6FCB3820B3FB630052FC23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		5C6124E5206A243A0089DF68 = {
 			isa = PBXGroup;
 			children = (
+				5C6FCB3C20B3FB630052FC23 /* SecurityWrapperSample */,
 				5C6FCAF120B155A20052FC23 /* SecurityWrapper */,
 				5C6FCAFE20B155A30052FC23 /* SecurityWrapperTests */,
 				5C6124EF206A243A0089DF68 /* Products */,
@@ -69,6 +98,7 @@
 			children = (
 				5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */,
 				5C6FCAF820B155A20052FC23 /* SecurityWrapperTests.xctest */,
+				5C6FCB3B20B3FB630052FC23 /* SecurityWrapperSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6FCAFF20B155A30052FC23 /* SecurityWrapperTests.swift */,
+				5C6FCB2F20B3F81C0052FC23 /* HashingTests.swift */,
 				5C6FCB0120B155A30052FC23 /* Info.plist */,
 			);
 			path = SecurityWrapperTests;
@@ -108,6 +139,19 @@
 				5C6FCB2020B15BEC0052FC23 /* module.modulemap */,
 			);
 			path = CCommonCrypto;
+			sourceTree = "<group>";
+		};
+		5C6FCB3C20B3FB630052FC23 /* SecurityWrapperSample */ = {
+			isa = PBXGroup;
+			children = (
+				5C6FCB3D20B3FB630052FC23 /* AppDelegate.swift */,
+				5C6FCB3F20B3FB630052FC23 /* ViewController.swift */,
+				5C6FCB4120B3FB630052FC23 /* Main.storyboard */,
+				5C6FCB4420B3FB660052FC23 /* Assets.xcassets */,
+				5C6FCB4620B3FB660052FC23 /* LaunchScreen.storyboard */,
+				5C6FCB4920B3FB660052FC23 /* Info.plist */,
+			);
+			path = SecurityWrapperSample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,11 +198,29 @@
 			);
 			dependencies = (
 				5C6FCAFB20B155A20052FC23 /* PBXTargetDependency */,
+				5C6FCB5C20B3FB8A0052FC23 /* PBXTargetDependency */,
 			);
 			name = SecurityWrapperTests;
 			productName = SecurityWrapperTests;
 			productReference = 5C6FCAF820B155A20052FC23 /* SecurityWrapperTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5C6FCB3A20B3FB630052FC23 /* SecurityWrapperSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C6FCB5520B3FB660052FC23 /* Build configuration list for PBXNativeTarget "SecurityWrapperSample" */;
+			buildPhases = (
+				5C6FCB3720B3FB630052FC23 /* Sources */,
+				5C6FCB3820B3FB630052FC23 /* Frameworks */,
+				5C6FCB3920B3FB630052FC23 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SecurityWrapperSample;
+			productName = SecurityWrapperSample;
+			productReference = 5C6FCB3B20B3FB630052FC23 /* SecurityWrapperSample.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -178,6 +240,11 @@
 					5C6FCAF720B155A20052FC23 = {
 						CreatedOnToolsVersion = 9.3;
 						ProvisioningStyle = Automatic;
+						TestTargetID = 5C6FCB3A20B3FB630052FC23;
+					};
+					5C6FCB3A20B3FB630052FC23 = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -194,6 +261,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				5C6FCB3A20B3FB630052FC23 /* SecurityWrapperSample */,
 				5C6FCAEF20B155A10052FC23 /* SecurityWrapper */,
 				5C6FCAF720B155A20052FC23 /* SecurityWrapperTests */,
 			);
@@ -215,6 +283,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5C6FCB3920B3FB630052FC23 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C6FCB4820B3FB660052FC23 /* LaunchScreen.storyboard in Resources */,
+				5C6FCB4520B3FB660052FC23 /* Assets.xcassets in Resources */,
+				5C6FCB4320B3FB630052FC23 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -231,7 +309,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6FCB3020B3F81C0052FC23 /* HashingTests.swift in Sources */,
 				5C6FCB0020B155A30052FC23 /* SecurityWrapperTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C6FCB3720B3FB630052FC23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C6FCB4020B3FB630052FC23 /* ViewController.swift in Sources */,
+				5C6FCB3E20B3FB630052FC23 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +331,31 @@
 			target = 5C6FCAEF20B155A10052FC23 /* SecurityWrapper */;
 			targetProxy = 5C6FCAFA20B155A20052FC23 /* PBXContainerItemProxy */;
 		};
+		5C6FCB5C20B3FB8A0052FC23 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C6FCB3A20B3FB630052FC23 /* SecurityWrapperSample */;
+			targetProxy = 5C6FCB5B20B3FB8A0052FC23 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5C6FCB4120B3FB630052FC23 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6FCB4220B3FB630052FC23 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5C6FCB4620B3FB660052FC23 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6FCB4720B3FB660052FC23 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5C612509206A243A0089DF68 /* Debug */ = {
@@ -429,6 +541,7 @@
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Classes/CCommonCrypto";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SecurityWrapperSample.app/SecurityWrapperSample";
 			};
 			name = Debug;
 		};
@@ -445,6 +558,41 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vancosys.SecurityWrapperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Classes/CCommonCrypto";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SecurityWrapperSample.app/SecurityWrapperSample";
+			};
+			name = Release;
+		};
+		5C6FCB5620B3FB660052FC23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4A6ZQ29Y2F;
+				INFOPLIST_FILE = SecurityWrapperSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vancosys.SecurityWrapperSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5C6FCB5720B3FB660052FC23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4A6ZQ29Y2F;
+				INFOPLIST_FILE = SecurityWrapperSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vancosys.SecurityWrapperSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -476,6 +624,15 @@
 			buildConfigurations = (
 				5C6FCB0C20B155A30052FC23 /* Debug */,
 				5C6FCB0D20B155A30052FC23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C6FCB5520B3FB660052FC23 /* Build configuration list for PBXNativeTarget "SecurityWrapperSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C6FCB5620B3FB660052FC23 /* Debug */,
+				5C6FCB5720B3FB660052FC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

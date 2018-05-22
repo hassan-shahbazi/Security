@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5C6FCAEF20B155A10052FC23"
-               BuildableName = "SecurityWrapper.framework"
-               BlueprintName = "SecurityWrapper"
+               BlueprintIdentifier = "5C6FCB3A20B3FB630052FC23"
+               BuildableName = "SecurityWrapperSample.app"
+               BlueprintName = "SecurityWrapperSample"
                ReferencedContainer = "container:SecurityWrapper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,24 +32,29 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5C6FCB4D20B3FB660052FC23"
+               BuildableName = "SecurityWrapperSampleTests.xctest"
+               BlueprintName = "SecurityWrapperSampleTests"
+               ReferencedContainer = "container:SecurityWrapper.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "5C6FCAF720B155A20052FC23"
                BuildableName = "SecurityWrapperTests.xctest"
                BlueprintName = "SecurityWrapperTests"
                ReferencedContainer = "container:SecurityWrapper.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "SecurityWrapperTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5C6FCAEF20B155A10052FC23"
-            BuildableName = "SecurityWrapper.framework"
-            BlueprintName = "SecurityWrapper"
+            BlueprintIdentifier = "5C6FCB3A20B3FB630052FC23"
+            BuildableName = "SecurityWrapperSample.app"
+            BlueprintName = "SecurityWrapperSample"
             ReferencedContainer = "container:SecurityWrapper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,15 +71,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5C6FCAEF20B155A10052FC23"
-            BuildableName = "SecurityWrapper.framework"
-            BlueprintName = "SecurityWrapper"
+            BlueprintIdentifier = "5C6FCB3A20B3FB630052FC23"
+            BuildableName = "SecurityWrapperSample.app"
+            BlueprintName = "SecurityWrapperSample"
             ReferencedContainer = "container:SecurityWrapper.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -84,15 +90,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5C6FCAEF20B155A10052FC23"
-            BuildableName = "SecurityWrapper.framework"
-            BlueprintName = "SecurityWrapper"
+            BlueprintIdentifier = "5C6FCB3A20B3FB630052FC23"
+            BuildableName = "SecurityWrapperSample.app"
+            BlueprintName = "SecurityWrapperSample"
             ReferencedContainer = "container:SecurityWrapper.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -11,7 +11,7 @@ A very simple wrapper for common security implementations in iOS - Sign, Verify,
 `pod 'SecurityWrapper'`
 
 ## Usage
-To learn how it work you can take a look at [SecurityWrapperTests.swift](https://github.com/Hassaniiii/Security/blob/master/SecurityWrapperTests/SecurityWrapperTests.swift) class. **Please note that the tests doesn't run on simulator since they need device's keychain.** You have to add a sample target to the project if you want to run the tests.  
+To learn how it work you can take a look at [SecurityWrapperTests.swift](https://github.com/Hassaniiii/Security/blob/master/SecurityWrapperTests/SecurityWrapperTests.swift) class.
 
 ### Key generation
 ```swift

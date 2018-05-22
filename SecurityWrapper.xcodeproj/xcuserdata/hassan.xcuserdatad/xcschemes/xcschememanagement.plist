@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>SecurityWrapperSample.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>SecurityWrapperTests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -33,6 +38,11 @@
 			<true/>
 		</dict>
 		<key>5C6FCAF720B155A20052FC23</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5C6FCB3A20B3FB630052FC23</key>
 		<dict>
 			<key>primary</key>
 			<true/>
