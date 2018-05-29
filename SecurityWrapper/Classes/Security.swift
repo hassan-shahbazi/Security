@@ -31,7 +31,7 @@ public class Security: NSObject {
         keyAccess   = KeycahinAccess
     }
     
-    public func generateKeyPair(PublicKeyID pubkey: String, PrivateKeyID pkey: String) -> (SecKey?, SecKey?) {
+    public func generateKeyPair(PublicKeyID pubkey: String? = nil, PrivateKeyID pkey: String? = nil) -> (SecKey?, SecKey?) {
         var publicKey:  SecKey?
         var privateKey: SecKey?
         
@@ -39,13 +39,13 @@ public class Security: NSObject {
         var publicKeyAttribute  = [CFString:Any]()
         var keyPairAttribute    = [CFString:Any]()
 
-        privateKeyAttribute[kSecAttrIsPermanent]    = NSNumber(value: true)
+        privateKeyAttribute[kSecAttrIsPermanent]    = NSNumber(value: pubkey != nil)
         privateKeyAttribute[kSecAttrAccessible]     = keyAccess
-        privateKeyAttribute[kSecAttrApplicationTag] = pkey.data(using: .utf8)
+        privateKeyAttribute[kSecAttrApplicationTag] = pkey?.data(using: .utf8)
         
-        publicKeyAttribute[kSecAttrIsPermanent]     = NSNumber(value: true)
+        publicKeyAttribute[kSecAttrIsPermanent]     = NSNumber(value: pubkey != nil)
         publicKeyAttribute[kSecAttrAccessible]      = keyAccess
-        publicKeyAttribute[kSecAttrApplicationTag]  = pubkey.data(using: .utf8)
+        publicKeyAttribute[kSecAttrApplicationTag]  = pubkey?.data(using: .utf8)
 
         keyPairAttribute[kSecAttrType]              = keyAlgo
         keyPairAttribute[kSecAttrKeySizeInBits]     = keySize

@@ -104,6 +104,14 @@ class SecurityWrapperTests: XCTestCase {
             XCTAssertFalse(true)
         }
     }
+
+    func test_8_generateKeyPairWithoutSaving() {
+        let security = Security(KeycahinAccess: kSecAttrAccessibleAlways)
+        let (pubKey, pKey) = security.generateKeyPair()
+        
+        XCTAssertNotNil(pubKey)
+        XCTAssertNotNil(pKey)
+    }
 }
 
 extension Data {
