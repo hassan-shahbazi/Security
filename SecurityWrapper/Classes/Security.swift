@@ -39,7 +39,7 @@ public class Security: NSObject {
         var publicKeyAttribute  = [CFString:Any]()
         var keyPairAttribute    = [CFString:Any]()
 
-        privateKeyAttribute[kSecAttrIsPermanent]    = NSNumber(value: pubkey != nil)
+        privateKeyAttribute[kSecAttrIsPermanent]    = NSNumber(value: pkey != nil)
         privateKeyAttribute[kSecAttrAccessible]     = keyAccess
         privateKeyAttribute[kSecAttrApplicationTag] = pkey?.data(using: .utf8)
         
