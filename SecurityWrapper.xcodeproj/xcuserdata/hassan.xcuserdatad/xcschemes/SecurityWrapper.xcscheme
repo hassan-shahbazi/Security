@@ -37,11 +37,6 @@
                BlueprintName = "SecurityWrapperTests"
                ReferencedContainer = "container:SecurityWrapper.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "SecurityWrapperTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

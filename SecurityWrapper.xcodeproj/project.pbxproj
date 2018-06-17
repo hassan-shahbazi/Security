@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C35352520D6889200294FDB /* SecurityWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; };
+		5C35352620D6889200294FDB /* SecurityWrapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5C6FCAF920B155A20052FC23 /* SecurityWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; };
 		5C6FCB0020B155A30052FC23 /* SecurityWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCAFF20B155A30052FC23 /* SecurityWrapperTests.swift */; };
 		5C6FCB0220B155A30052FC23 /* SecurityWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6FCAF220B155A20052FC23 /* SecurityWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -21,6 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5C35352720D6889200294FDB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C6124E6206A243A0089DF68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C6FCAEF20B155A10052FC23;
+			remoteInfo = SecurityWrapper;
+		};
 		5C6FCAFA20B155A20052FC23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5C6124E6206A243A0089DF68 /* Project object */;
@@ -36,6 +45,20 @@
 			remoteInfo = SecurityWrapperSample;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5C35352920D6889200294FDB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5C35352620D6889200294FDB /* SecurityWrapper.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SecurityWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C35352520D6889200294FDB /* SecurityWrapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,10 +236,12 @@
 				5C6FCB3720B3FB630052FC23 /* Sources */,
 				5C6FCB3820B3FB630052FC23 /* Frameworks */,
 				5C6FCB3920B3FB630052FC23 /* Resources */,
+				5C35352920D6889200294FDB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5C35352820D6889200294FDB /* PBXTargetDependency */,
 			);
 			name = SecurityWrapperSample;
 			productName = SecurityWrapperSample;
@@ -326,6 +352,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5C35352820D6889200294FDB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C6FCAEF20B155A10052FC23 /* SecurityWrapper */;
+			targetProxy = 5C35352720D6889200294FDB /* PBXContainerItemProxy */;
+		};
 		5C6FCAFB20B155A20052FC23 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5C6FCAEF20B155A10052FC23 /* SecurityWrapper */;
@@ -478,7 +509,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 92TDT63R6P;
+				DEVELOPMENT_TEAM = 4A6ZQ29Y2F;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -507,7 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 92TDT63R6P;
+				DEVELOPMENT_TEAM = 4A6ZQ29Y2F;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -567,6 +598,7 @@
 		5C6FCB5620B3FB660052FC23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -584,6 +616,7 @@
 		5C6FCB5720B3FB660052FC23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;

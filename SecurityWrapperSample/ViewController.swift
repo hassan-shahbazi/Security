@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import SecurityWrapper
-
 
 class ViewController: UIViewController {
     override func viewDidLoad() {

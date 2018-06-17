@@ -17,7 +17,7 @@ public class Security: NSObject {
     private var encAlgo:    SecKeyAlgorithm!
     private var keyAccess:  CFString!
     
-    public init(KeyType:           CFString = kSecAttrKeyTypeEC,
+    public init(KeyType:           CFString = kSecAttrKeyTypeECSECPrimeRandom,
                 KeySize:           Int = 256,
                 SignAlgorithm:     SecKeyAlgorithm = .ecdsaSignatureDigestX962SHA256,
                 EncryptAlgorithm:  SecKeyAlgorithm = .eciesEncryptionStandardX963SHA256AESGCM,
@@ -111,6 +111,19 @@ public class Security: NSObject {
                     return plain as Data
                 }
                 throw error!.takeRetainedValue()
+            }
+        }
+        return nil
+    }
+
+    public func calculateShareSecret(PrivateKey: String, PublicKey: String, Algorithm: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, Parameters: [String:Any]) throws -> Data? {
+        if let privateKey: SecKey = self.getKey(ID: PrivateKey) {
+            if let publicKey: SecKey = self.getKey(ID: PublicKey) {
+                var error: Unmanaged<CFError>?
+                if let sharedSecret = SecKeyCopyKeyExchangeResult(privateKey, Algorithm, publicKey, Parameters as CFDictionary, &error) {
+                    return sharedSecret as Data
+                }
+                throw error!.takeRetainedValue() as Error
             }
         }
         return nil

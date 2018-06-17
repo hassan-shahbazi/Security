@@ -112,6 +112,22 @@ class SecurityWrapperTests: XCTestCase {
         XCTAssertNotNil(pubKey)
         XCTAssertNotNil(pKey)
     }
+
+    func test_9_calculateShareSecrets() {
+        let security = Security(KeycahinAccess: kSecAttrAccessibleAlways)
+        let _ = security.generateKeyPair(PublicKeyID: "PubKeyID1", PrivateKeyID: "PvKeyID1")
+        let _ = security.generateKeyPair(PublicKeyID: "PubKeyID2", PrivateKeyID: "PvKeyID2")
+        
+        let sharedSecret1 = try? security.calculateShareSecret(PrivateKey: "PvKeyID1", PublicKey: "PubKeyID2", Parameters: [:])
+        let sharedSecret2 = try? security.calculateShareSecret(PrivateKey: "PvKeyID2", PublicKey: "PubKeyID1", Parameters: [:])
+        
+        XCTAssertNotNil(sharedSecret1 as Any)
+        XCTAssertNotNil(sharedSecret2 as Any)
+        XCTAssertEqual(sharedSecret1, sharedSecret2)
+        
+        let wrongSharedSecret = try? security.calculateShareSecret(PrivateKey: "PvKeyID2", PublicKey: "PublicKeyID", Parameters: [:])
+        XCTAssertNotEqual(sharedSecret1, wrongSharedSecret)
+    }
 }
 
 extension Data {
