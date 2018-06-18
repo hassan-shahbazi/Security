@@ -72,7 +72,7 @@ public enum HashAlgorithm {
 public class Hash: NSObject {
     private var algorithm: HashAlgorithm!
 
-    override init() {
+    internal override init() {
         super.init()
     }
 
@@ -81,7 +81,7 @@ public class Hash: NSObject {
         self.algorithm = algorithm
     }
 
-    public func hash(Message message: Data) -> Data? {
+    public func hash(_ message: Data) -> Data? {
         var digestData = Data(count: Int(algorithm.DigestLength))
 
         _ = digestData.withUnsafeMutableBytes {digestBytes in
@@ -94,7 +94,7 @@ public class Hash: NSObject {
 
     internal func hash(data: UnsafeRawPointer, len: CC_LONG, md: UnsafeMutablePointer<UInt8>) {}
 
-    public func hmac(Message message: Data, Key key:Data) -> Data? {
+    public func hmac(message: Data, key: Data) -> Data? {
         var macData = Data(count: Int(algorithm.DigestLength))
 
         macData.withUnsafeMutableBytes { macBytes in

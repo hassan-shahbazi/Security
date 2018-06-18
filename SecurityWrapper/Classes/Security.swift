@@ -17,21 +17,17 @@ public class Security: NSObject {
     private var encAlgo:    SecKeyAlgorithm!
     private var keyAccess:  CFString!
     
-    public init(KeyType:           CFString = kSecAttrKeyTypeECSECPrimeRandom,
-                KeySize:           Int = 256,
-                SignAlgorithm:     SecKeyAlgorithm = .ecdsaSignatureDigestX962SHA256,
-                EncryptAlgorithm:  SecKeyAlgorithm = .eciesEncryptionStandardX963SHA256AESGCM,
-                KeycahinAccess:    CFString = kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly) {
+    public init(keyType: CFString = kSecAttrKeyTypeECSECPrimeRandom, keySize: Int = 256, signAlgo: SecKeyAlgorithm = .ecdsaSignatureDigestX962SHA256, encryptionAlgo: SecKeyAlgorithm = .eciesEncryptionStandardX963SHA256AESGCM, keychainAccess: CFString = kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly) {
         
         super.init()
-        keyAlgo     = KeyType
-        keySize     = NSNumber(value: KeySize)
-        signAlgo    = SignAlgorithm
-        encAlgo     = EncryptAlgorithm
-        keyAccess   = KeycahinAccess
+        self.keyAlgo = keyType
+        self.keySize = NSNumber(value: keySize)
+        self.signAlgo = signAlgo
+        self.encAlgo = encryptionAlgo
+        self.keyAccess = keychainAccess
     }
     
-    public func generateKeyPair(PublicKeyID pubkey: String? = nil, PrivateKeyID pkey: String? = nil) -> (SecKey?, SecKey?) {
+    public func generateKeyPair(publicKeyID: String? = nil, privateKeyID: String? = nil) -> (SecKey?, SecKey?) {
         var publicKey:  SecKey?
         var privateKey: SecKey?
         
@@ -39,13 +35,13 @@ public class Security: NSObject {
         var publicKeyAttribute  = [CFString:Any]()
         var keyPairAttribute    = [CFString:Any]()
 
-        privateKeyAttribute[kSecAttrIsPermanent]    = NSNumber(value: pkey != nil)
+        privateKeyAttribute[kSecAttrIsPermanent]    = NSNumber(value: privateKeyID != nil)
         privateKeyAttribute[kSecAttrAccessible]     = keyAccess
-        privateKeyAttribute[kSecAttrApplicationTag] = pkey?.data(using: .utf8)
+        privateKeyAttribute[kSecAttrApplicationTag] = privateKeyID?.data(using: .utf8)
         
-        publicKeyAttribute[kSecAttrIsPermanent]     = NSNumber(value: pubkey != nil)
+        publicKeyAttribute[kSecAttrIsPermanent]     = NSNumber(value: publicKeyID != nil)
         publicKeyAttribute[kSecAttrAccessible]      = keyAccess
-        publicKeyAttribute[kSecAttrApplicationTag]  = pubkey?.data(using: .utf8)
+        publicKeyAttribute[kSecAttrApplicationTag]  = publicKeyID?.data(using: .utf8)
 
         keyPairAttribute[kSecAttrType]              = keyAlgo
         keyPairAttribute[kSecAttrKeySizeInBits]     = keySize
@@ -56,19 +52,19 @@ public class Security: NSObject {
         return (publicKey, privateKey)
     }
     
-    public func getKey(ID id: String) -> SecKey? {
-        return queryKeychain(ID: id, Type: kSecReturnRef) as! SecKey?
+    public func getKey(id: String) -> SecKey? {
+        return queryKeychain(id, kSecReturnRef) as! SecKey?
     }
     
-    public func getKey(ID id: String) -> Data? {
-        return queryKeychain(ID: id, Type: kSecReturnData) as? Data
+    public func getKey(id: String) -> Data? {
+        return queryKeychain(id, kSecReturnData) as? Data
     }
     
-    public func sign(Data data: Data, PrivateKey pkey: String) throws -> Data?  {
+    public func sign(data: Data, privateKeyID: String) throws -> Data?  {
         var error: Unmanaged<CFError>?
-        if let key: SecKey = getKey(ID: pkey) {
-            if SecKeyIsAlgorithmSupported(key, .sign, signAlgo) {
-                if let signature = SecKeyCreateSignature(key, signAlgo, data as CFData, &error) {
+        if let key: SecKey = getKey(id: privateKeyID) {
+            if SecKeyIsAlgorithmSupported(key, .sign, self.signAlgo) {
+                if let signature = SecKeyCreateSignature(key, self.signAlgo, data as CFData, &error) {
                     return signature as Data?
                 }
                 throw error!.takeRetainedValue() as Error
@@ -77,11 +73,11 @@ public class Security: NSObject {
         return nil
     }
 
-    public func verify(RawData raw: Data, SignedData data: Data, PublicKey pubkey: String) throws -> Bool {
+    public func verify(rawData: Data, signedData: Data, publicKeyID: String) throws -> Bool {
         var error: Unmanaged<CFError>?
-        if let key: SecKey = getKey(ID: pubkey) {
-            if SecKeyIsAlgorithmSupported(key, .verify, signAlgo) {
-                if SecKeyVerifySignature(key, signAlgo, raw as CFData, data as CFData, &error) {
+        if let key: SecKey = getKey(id: publicKeyID) {
+            if SecKeyIsAlgorithmSupported(key, .verify, self.signAlgo) {
+                if SecKeyVerifySignature(key, self.signAlgo, rawData as CFData, signedData as CFData, &error) {
                     return true
                 }
                 throw error!.takeRetainedValue() as Error
@@ -90,11 +86,11 @@ public class Security: NSObject {
         return false
     }
 
-    public func encrypt(Plain text: Data, Key key: String) throws -> Data? {
+    public func encrypt(text: Data, keyID: String) throws -> Data? {
         var error: Unmanaged<CFError>?
-        if let key: SecKey = getKey(ID: key) {
-            if SecKeyIsAlgorithmSupported(key, .encrypt, encAlgo) {
-                if let cipher = SecKeyCreateEncryptedData(key, encAlgo, text as CFData, &error) {
+        if let key: SecKey = getKey(id: keyID) {
+            if SecKeyIsAlgorithmSupported(key, .encrypt, self.encAlgo) {
+                if let cipher = SecKeyCreateEncryptedData(key, self.encAlgo, text as CFData, &error) {
                     return cipher as Data
                 }
                 throw error!.takeRetainedValue()
@@ -103,11 +99,11 @@ public class Security: NSObject {
         return nil
     }
     
-    public func decrypt(Cipher text: Data, Key key: String) throws -> Data? {
+    public func decrypt(cipher: Data, keyID: String) throws -> Data? {
         var error: Unmanaged<CFError>?
-        if let key: SecKey = getKey(ID: key) {
-            if SecKeyIsAlgorithmSupported(key, .decrypt, encAlgo) {
-                if let plain = SecKeyCreateDecryptedData(key, encAlgo, text as CFData, &error) {
+        if let key: SecKey = getKey(id: keyID) {
+            if SecKeyIsAlgorithmSupported(key, .decrypt, self.encAlgo) {
+                if let plain = SecKeyCreateDecryptedData(key, encAlgo, cipher as CFData, &error) {
                     return plain as Data
                 }
                 throw error!.takeRetainedValue()
@@ -116,23 +112,37 @@ public class Security: NSObject {
         return nil
     }
 
-    public func calculateShareSecret(PrivateKey: String, PublicKey: String, Algorithm: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, Parameters: [String:Any]) throws -> Data? {
-        if let privateKey: SecKey = self.getKey(ID: PrivateKey) {
-            if let publicKey: SecKey = self.getKey(ID: PublicKey) {
-                var error: Unmanaged<CFError>?
-                if let sharedSecret = SecKeyCopyKeyExchangeResult(privateKey, Algorithm, publicKey, Parameters as CFDictionary, &error) {
-                    return sharedSecret as Data
-                }
-                throw error!.takeRetainedValue() as Error
+    public func calculateSharedSecret(privateKey: String, publicKey: String, algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, parameters: [String:Any] = [:]) throws -> Data? {
+        if let pvKey: SecKey = self.getKey(id: privateKey) {
+            if let pubKey: SecKey = self.getKey(id: publicKey) {
+                return try calculateSharedSecret(pvKey, pubKey, algo, parameters)
             }
         }
         return nil
+    }
+
+    public func calculateSharedSecret(privateKey: Data, publicKey: Data, algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, parameters: [String:Any] = [:]) throws -> Data? {
+        if let pvKey: SecKey = self.dataToSecKey(privateKey: privateKey) {
+            if let pubKey: SecKey = self.dataToSecKey(publicKey: publicKey) {
+                return try calculateSharedSecret(pvKey, pubKey, algo, parameters)
+            }
+        }
+        return nil
+    }
+    
+    private func calculateSharedSecret(_ privateKey: SecKey, _ publicKey: SecKey, _ algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, _ parameters: [String:Any]) throws -> Data? {
+        
+        var error: Unmanaged<CFError>?
+        if let sharedSecret = SecKeyCopyKeyExchangeResult(privateKey, algo, publicKey, parameters as CFDictionary, &error) {
+            return sharedSecret as Data
+        }
+        throw error!.takeRetainedValue() as Error
     }
 }
 
 
 extension Security {
-    private func queryKeychain(ID id: String, Type type: CFString) -> AnyObject? {
+    private func queryKeychain(_ id: String, _ type: CFString) -> AnyObject? {
         var keyAttribute  = [CFString:Any]()
         var key:  AnyObject?
         
@@ -144,5 +154,21 @@ extension Security {
         
         SecItemCopyMatching(keyAttribute as CFDictionary, &key)
         return key
+    }
+    
+    private func dataToSecKey(publicKey: Data) -> SecKey? {
+        var publicKeyAttribute = [CFString:Any]()
+        publicKeyAttribute[kSecAttrType]     = keyAlgo
+        publicKeyAttribute[kSecAttrKeyClass] = kSecAttrKeyClassPublic
+
+        return SecKeyCreateWithData(publicKey as CFData, publicKeyAttribute as CFDictionary, nil)
+    }
+    
+    private func dataToSecKey(privateKey: Data) -> SecKey? {
+        var privateKeyAttribute = [CFString:Any]()
+        privateKeyAttribute[kSecAttrType]     = keyAlgo
+        privateKeyAttribute[kSecAttrKeyClass] = kSecAttrKeyClassPrivate
+        
+        return SecKeyCreateWithData(privateKey as CFData, privateKeyAttribute as CFDictionary, nil)
     }
 }
