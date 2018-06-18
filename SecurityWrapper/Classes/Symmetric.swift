@@ -87,19 +87,3 @@ extension Symmetric {
         return nil
     }
 }
-
-extension Data {
-    public var hex: String {
-        var str = ""
-        for byte in [UInt8](self) {
-            str = str.appendingFormat("%02x", UInt(byte))
-        }
-        return str
-    }
-}
-
-extension String {
-    public var hex: String {
-        return self.utf8.map{ $0 }.reduce("") { $0 + String($1, radix: 16, uppercase: true) }
-    }
-}
