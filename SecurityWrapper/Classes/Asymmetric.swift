@@ -1,16 +1,15 @@
 //
-//  Security.swift
-//  SignVerify
+//  Asymmetric.swift
+//  SecurityWrapper
 //
-//  Created by Hassan Shahbazi on 2018-03-27.
+//  Created by Hassan Shahbazi on 2018-06-18.
 //  Copyright © 2018 Hassan Shahbazi. All rights reserved.
 //
 
 import UIKit
 import Security
 
-public class Security: NSObject {
-    
+public class Asymmetric: NSObject {
     private var keyAlgo:    CFString!
     private var keySize:    NSNumber!
     private var signAlgo:   SecKeyAlgorithm!
@@ -18,8 +17,8 @@ public class Security: NSObject {
     private var keyAccess:  CFString!
     
     public init(keyType: CFString = kSecAttrKeyTypeECSECPrimeRandom, keySize: Int = 256, signAlgo: SecKeyAlgorithm = .ecdsaSignatureDigestX962SHA256, encryptionAlgo: SecKeyAlgorithm = .eciesEncryptionStandardX963SHA256AESGCM, keychainAccess: CFString = kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly) {
-        
         super.init()
+        
         self.keyAlgo = keyType
         self.keySize = NSNumber(value: keySize)
         self.signAlgo = signAlgo
@@ -34,7 +33,7 @@ public class Security: NSObject {
         var privateKeyAttribute = [CFString:Any]()
         var publicKeyAttribute  = [CFString:Any]()
         var keyPairAttribute    = [CFString:Any]()
-
+        
         privateKeyAttribute[kSecAttrIsPermanent]    = NSNumber(value: privateKeyID != nil)
         privateKeyAttribute[kSecAttrAccessible]     = keyAccess
         privateKeyAttribute[kSecAttrApplicationTag] = privateKeyID?.data(using: .utf8)
@@ -42,7 +41,7 @@ public class Security: NSObject {
         publicKeyAttribute[kSecAttrIsPermanent]     = NSNumber(value: publicKeyID != nil)
         publicKeyAttribute[kSecAttrAccessible]      = keyAccess
         publicKeyAttribute[kSecAttrApplicationTag]  = publicKeyID?.data(using: .utf8)
-
+        
         keyPairAttribute[kSecAttrType]              = keyAlgo
         keyPairAttribute[kSecAttrKeySizeInBits]     = keySize
         keyPairAttribute[kSecPrivateKeyAttrs]       = privateKeyAttribute
@@ -72,7 +71,7 @@ public class Security: NSObject {
         }
         return nil
     }
-
+    
     public func verify(rawData: Data, signedData: Data, publicKeyID: String) throws -> Bool {
         var error: Unmanaged<CFError>?
         if let key: SecKey = getKey(id: publicKeyID) {
@@ -85,7 +84,7 @@ public class Security: NSObject {
         }
         return false
     }
-
+    
     public func encrypt(text: Data, keyID: String) throws -> Data? {
         var error: Unmanaged<CFError>?
         if let key: SecKey = getKey(id: keyID) {
@@ -111,7 +110,7 @@ public class Security: NSObject {
         }
         return nil
     }
-
+    
     public func calculateSharedSecret(privateKey: String, publicKey: String, algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, parameters: [String:Any] = [:]) throws -> Data? {
         if let pvKey: SecKey = self.getKey(id: privateKey) {
             if let pubKey: SecKey = self.getKey(id: publicKey) {
@@ -120,7 +119,7 @@ public class Security: NSObject {
         }
         return nil
     }
-
+    
     public func calculateSharedSecret(privateKey: Data, publicKey: Data, algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, parameters: [String:Any] = [:]) throws -> Data? {
         if let pvKey: SecKey = self.dataToSecKey(privateKey: privateKey) {
             if let pubKey: SecKey = self.dataToSecKey(publicKey: publicKey) {
@@ -129,7 +128,9 @@ public class Security: NSObject {
         }
         return nil
     }
-    
+}
+
+extension Asymmetric {
     private func calculateSharedSecret(_ privateKey: SecKey, _ publicKey: SecKey, _ algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, _ parameters: [String:Any]) throws -> Data? {
         
         var error: Unmanaged<CFError>?
@@ -138,10 +139,7 @@ public class Security: NSObject {
         }
         throw error!.takeRetainedValue() as Error
     }
-}
 
-
-extension Security {
     private func queryKeychain(_ id: String, _ type: CFString) -> AnyObject? {
         var keyAttribute  = [CFString:Any]()
         var key:  AnyObject?
@@ -155,20 +153,20 @@ extension Security {
         SecItemCopyMatching(keyAttribute as CFDictionary, &key)
         return key
     }
-    
-    private func dataToSecKey(publicKey: Data) -> SecKey? {
-        var publicKeyAttribute = [CFString:Any]()
-        publicKeyAttribute[kSecAttrType]     = keyAlgo
-        publicKeyAttribute[kSecAttrKeyClass] = kSecAttrKeyClassPublic
 
-        return SecKeyCreateWithData(publicKey as CFData, publicKeyAttribute as CFDictionary, nil)
+    private func dataToSecKey(publicKey: Data) -> SecKey? {
+        return dataToSecKey(key: publicKey, type: kSecAttrKeyClassPublic)
     }
     
     private func dataToSecKey(privateKey: Data) -> SecKey? {
-        var privateKeyAttribute = [CFString:Any]()
-        privateKeyAttribute[kSecAttrType]     = keyAlgo
-        privateKeyAttribute[kSecAttrKeyClass] = kSecAttrKeyClassPrivate
+        return dataToSecKey(key: privateKey, type: kSecAttrKeyClassPrivate)
+    }
+    
+    private func dataToSecKey(key: Data, type: CFString) -> SecKey? {
+        var keyAttribute = [CFString:Any]()
+        keyAttribute[kSecAttrType] = keyAlgo
+        keyAttribute[kSecAttrKeyClass] = type
         
-        return SecKeyCreateWithData(privateKey as CFData, privateKeyAttribute as CFDictionary, nil)
+        return SecKeyCreateWithData(key as CFData, keyAttribute as CFDictionary, nil)
     }
 }

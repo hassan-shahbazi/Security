@@ -24,7 +24,7 @@ class SecurityWrapperTests: XCTestCase {
     }
     
     func test_1_keyGeneration() {
-        let security = Security(keychainAccess: kSecAttrAccessibleAlways)
+        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
         let (pubKey, pKey) = security.generateKeyPair(publicKeyID: "PublicKeyID", privateKeyID: "PrivateKeyID")
         
         XCTAssertNotNil(pubKey)
@@ -32,7 +32,7 @@ class SecurityWrapperTests: XCTestCase {
     }
     
     func test_2_keyData() {
-        let security = Security(keychainAccess: kSecAttrAccessibleAlways)
+        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
         let pubkey: Data? = security.getKey(id: "PublicKeyID")
         let pkey: Data? = security.getKey(id: "PrivateKeyID")
         
@@ -41,7 +41,7 @@ class SecurityWrapperTests: XCTestCase {
     }
     
     func test_3_keyRef() {
-        let security = Security(keychainAccess: kSecAttrAccessibleAlways)
+        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
         let pubkey: SecKey? = security.getKey(id: "PublicKeyID")
         let pkey: SecKey? = security.getKey(id: "PrivateKeyID")
         
@@ -50,7 +50,7 @@ class SecurityWrapperTests: XCTestCase {
     }
     
     func test_4_signData() {
-        let security = Security(signAlgo: .ecdsaSignatureDigestX962SHA512, keychainAccess: kSecAttrAccessibleAlways)
+        let security = Asymmetric(signAlgo: .ecdsaSignatureDigestX962SHA512, keychainAccess: kSecAttrAccessibleAlways)
         do {
             let sign = try security.sign(data: rawData, privateKeyID: "PrivateKeyID")
             XCTAssertNotNil(sign)
@@ -62,7 +62,7 @@ class SecurityWrapperTests: XCTestCase {
     }
     
     func test_5_verifySign() {
-        let security = Security(signAlgo: .ecdsaSignatureDigestX962SHA512, keychainAccess: kSecAttrAccessibleAlways)
+        let security = Asymmetric(signAlgo: .ecdsaSignatureDigestX962SHA512, keychainAccess: kSecAttrAccessibleAlways)
         do {
             let sign = try security.sign(data: rawData, privateKeyID: "PrivateKeyID")
             XCTAssertNotNil(sign)
@@ -77,7 +77,7 @@ class SecurityWrapperTests: XCTestCase {
     }
     
     func test_6_encrypt() {
-        let security = Security(keychainAccess: kSecAttrAccessibleAlways)
+        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
         do {
             let cipher = try security.encrypt(text: plainText, keyID: "PublicKeyID")
             
@@ -90,7 +90,7 @@ class SecurityWrapperTests: XCTestCase {
     }
     
     func test_7_decrypt() {
-        let security = Security(keychainAccess: kSecAttrAccessibleAlways)
+        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
         do {
             let cipher = try security.encrypt(text: plainText, keyID: "PublicKeyID")
             XCTAssertNotNil(cipher)
@@ -106,7 +106,7 @@ class SecurityWrapperTests: XCTestCase {
     }
 
     func test_8_generateKeyPairWithoutSaving() {
-        let security = Security(keychainAccess: kSecAttrAccessibleAlways)
+        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
         let (pubKey, pKey) = security.generateKeyPair()
     
         XCTAssertNotNil(pubKey)
@@ -114,7 +114,7 @@ class SecurityWrapperTests: XCTestCase {
     }
 
     func test_9_calculateShareSecrets_ID() {
-        let security = Security(keychainAccess: kSecAttrAccessibleAlways)
+        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
         let _ = security.generateKeyPair(publicKeyID: "PubKeyID1", privateKeyID: "PvKeyID1")
         let _ = security.generateKeyPair(publicKeyID: "PubKeyID2", privateKeyID: "PvKeyID2")
         
@@ -130,7 +130,7 @@ class SecurityWrapperTests: XCTestCase {
     }
     
     func test_10_calculateShareSecrets_Data() {
-        let security = Security(keychainAccess: kSecAttrAccessibleAlways)
+        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
         
         let pubKey1Data: Data = security.getKey(id: "PubKeyID1")!
         let pubKey2Data: Data = security.getKey(id: "PubKeyID2")!

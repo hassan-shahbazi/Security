@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		5C35352520D6889200294FDB /* SecurityWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; };
 		5C35352620D6889200294FDB /* SecurityWrapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5C35352F20D79F0E00294FDB /* SymmetricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C35352E20D79F0E00294FDB /* SymmetricTests.swift */; };
+		5C35353120D7A99900294FDB /* Asymmetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C35353020D7A99900294FDB /* Asymmetric.swift */; };
+		5C35353320D7A9A200294FDB /* Symmetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C35353220D7A9A200294FDB /* Symmetric.swift */; };
+		5C35353520D7C12000294FDB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C35353420D7C12000294FDB /* Keychain.swift */; };
 		5C6FCAF920B155A20052FC23 /* SecurityWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; };
 		5C6FCB0020B155A30052FC23 /* SecurityWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCAFF20B155A30052FC23 /* SecurityWrapperTests.swift */; };
 		5C6FCB0220B155A30052FC23 /* SecurityWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6FCAF220B155A20052FC23 /* SecurityWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C6FCB1E20B15BE80052FC23 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB1C20B15BE70052FC23 /* Hash.swift */; };
-		5C6FCB1F20B15BE80052FC23 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB1D20B15BE70052FC23 /* Security.swift */; };
 		5C6FCB3020B3F81C0052FC23 /* HashingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB2F20B3F81C0052FC23 /* HashingTests.swift */; };
 		5C6FCB3E20B3FB630052FC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB3D20B3FB630052FC23 /* AppDelegate.swift */; };
 		5C6FCB4020B3FB630052FC23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB3F20B3FB630052FC23 /* ViewController.swift */; };
@@ -61,6 +64,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5C35352E20D79F0E00294FDB /* SymmetricTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricTests.swift; sourceTree = "<group>"; };
+		5C35353020D7A99900294FDB /* Asymmetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asymmetric.swift; sourceTree = "<group>"; };
+		5C35353220D7A9A200294FDB /* Symmetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symmetric.swift; sourceTree = "<group>"; };
+		5C35353420D7C12000294FDB /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SecurityWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6FCAF220B155A20052FC23 /* SecurityWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecurityWrapper.h; sourceTree = "<group>"; };
 		5C6FCAF320B155A20052FC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,7 +75,6 @@
 		5C6FCAFF20B155A30052FC23 /* SecurityWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityWrapperTests.swift; sourceTree = "<group>"; };
 		5C6FCB0120B155A30052FC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C6FCB1C20B15BE70052FC23 /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
-		5C6FCB1D20B15BE70052FC23 /* Security.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Security.swift; sourceTree = "<group>"; };
 		5C6FCB2020B15BEC0052FC23 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		5C6FCB2F20B3F81C0052FC23 /* HashingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashingTests.swift; sourceTree = "<group>"; };
 		5C6FCB3B20B3FB630052FC23 /* SecurityWrapperSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecurityWrapperSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6FCAFF20B155A30052FC23 /* SecurityWrapperTests.swift */,
+				5C35352E20D79F0E00294FDB /* SymmetricTests.swift */,
 				5C6FCB2F20B3F81C0052FC23 /* HashingTests.swift */,
 				5C6FCB0120B155A30052FC23 /* Info.plist */,
 			);
@@ -152,7 +159,9 @@
 			children = (
 				5C6FCB1B20B15BCF0052FC23 /* CCommonCrypto */,
 				5C6FCB1C20B15BE70052FC23 /* Hash.swift */,
-				5C6FCB1D20B15BE70052FC23 /* Security.swift */,
+				5C35353020D7A99900294FDB /* Asymmetric.swift */,
+				5C35353220D7A9A200294FDB /* Symmetric.swift */,
+				5C35353420D7C12000294FDB /* Keychain.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -327,7 +336,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C6FCB1E20B15BE80052FC23 /* Hash.swift in Sources */,
-				5C6FCB1F20B15BE80052FC23 /* Security.swift in Sources */,
+				5C35353520D7C12000294FDB /* Keychain.swift in Sources */,
+				5C35353120D7A99900294FDB /* Asymmetric.swift in Sources */,
+				5C35353320D7A9A200294FDB /* Symmetric.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +348,7 @@
 			files = (
 				5C6FCB3020B3F81C0052FC23 /* HashingTests.swift in Sources */,
 				5C6FCB0020B155A30052FC23 /* SecurityWrapperTests.swift in Sources */,
+				5C35352F20D79F0E00294FDB /* SymmetricTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
