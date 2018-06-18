@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SecurityWrapper"
-  s.version      = "2.0.0"
+  s.version      = "2.0.1"
   s.summary      = "A very simple wrapper for common security implementations in iOS - Sign, Verify, Encrypt, Decrypt, and Deffie Helman."
   s.source       = { :git => "https://github.com/Hassaniiii/Security.git", :branch => "master" }
 
