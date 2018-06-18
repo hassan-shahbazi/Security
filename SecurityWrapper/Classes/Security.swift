@@ -116,17 +116,31 @@ public class Security: NSObject {
         return nil
     }
 
-    public func calculateShareSecret(PrivateKey: String, PublicKey: String, Algorithm: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, Parameters: [String:Any]) throws -> Data? {
+    public func calculateSharedSecret(PrivateKey: String, PublicKey: String, Algorithm: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, Parameters: [String:Any]) throws -> Data? {
         if let privateKey: SecKey = self.getKey(ID: PrivateKey) {
             if let publicKey: SecKey = self.getKey(ID: PublicKey) {
-                var error: Unmanaged<CFError>?
-                if let sharedSecret = SecKeyCopyKeyExchangeResult(privateKey, Algorithm, publicKey, Parameters as CFDictionary, &error) {
-                    return sharedSecret as Data
-                }
-                throw error!.takeRetainedValue() as Error
+                return try calculateSharedSecret(PrivateKey: privateKey, PublicKey: publicKey, Algorithm: Algorithm, Parameters: Parameters)
             }
         }
         return nil
+    }
+
+    public func calculateSharedSecret(PrivateKey: Data, PublicKey: Data, Algorithm: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, Parameters: [String:Any]) throws -> Data? {
+        if let privateKey: SecKey = self.dataToSecKey(privateKey: PrivateKey) {
+            if let publicKey: SecKey = self.dataToSecKey(publicKey: PublicKey) {
+                return try calculateSharedSecret(PrivateKey: privateKey, PublicKey: publicKey, Algorithm: Algorithm, Parameters: Parameters)
+            }
+        }
+        return nil
+    }
+    
+    private func calculateSharedSecret(PrivateKey: SecKey, PublicKey: SecKey, Algorithm: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, Parameters: [String:Any]) throws -> Data? {
+        
+        var error: Unmanaged<CFError>?
+        if let sharedSecret = SecKeyCopyKeyExchangeResult(PrivateKey, Algorithm, PublicKey, Parameters as CFDictionary, &error) {
+            return sharedSecret as Data
+        }
+        throw error!.takeRetainedValue() as Error
     }
 }
 
@@ -144,5 +158,21 @@ extension Security {
         
         SecItemCopyMatching(keyAttribute as CFDictionary, &key)
         return key
+    }
+    
+    private func dataToSecKey(publicKey: Data) -> SecKey? {
+        var publicKeyAttribute = [CFString:Any]()
+        publicKeyAttribute[kSecAttrType]     = keyAlgo
+        publicKeyAttribute[kSecAttrKeyClass] = kSecAttrKeyClassPublic
+
+        return SecKeyCreateWithData(publicKey as CFData, publicKeyAttribute as CFDictionary, nil)
+    }
+    
+    private func dataToSecKey(privateKey: Data) -> SecKey? {
+        var privateKeyAttribute = [CFString:Any]()
+        privateKeyAttribute[kSecAttrType]     = keyAlgo
+        privateKeyAttribute[kSecAttrKeyClass] = kSecAttrKeyClassPrivate
+        
+        return SecKeyCreateWithData(privateKey as CFData, privateKeyAttribute as CFDictionary, nil)
     }
 }

@@ -113,19 +113,39 @@ class SecurityWrapperTests: XCTestCase {
         XCTAssertNotNil(pKey)
     }
 
-    func test_9_calculateShareSecrets() {
+    func test_9_calculateShareSecrets_ID() {
         let security = Security(KeycahinAccess: kSecAttrAccessibleAlways)
         let _ = security.generateKeyPair(PublicKeyID: "PubKeyID1", PrivateKeyID: "PvKeyID1")
         let _ = security.generateKeyPair(PublicKeyID: "PubKeyID2", PrivateKeyID: "PvKeyID2")
         
-        let sharedSecret1 = try? security.calculateShareSecret(PrivateKey: "PvKeyID1", PublicKey: "PubKeyID2", Parameters: [:])
-        let sharedSecret2 = try? security.calculateShareSecret(PrivateKey: "PvKeyID2", PublicKey: "PubKeyID1", Parameters: [:])
+        let sharedSecret1 = try? security.calculateSharedSecret(PrivateKey: "PvKeyID1", PublicKey: "PubKeyID2", Parameters: [:])
+        let sharedSecret2 = try? security.calculateSharedSecret(PrivateKey: "PvKeyID2", PublicKey: "PubKeyID1", Parameters: [:])
         
         XCTAssertNotNil(sharedSecret1 as Any)
         XCTAssertNotNil(sharedSecret2 as Any)
         XCTAssertEqual(sharedSecret1, sharedSecret2)
         
-        let wrongSharedSecret = try? security.calculateShareSecret(PrivateKey: "PvKeyID2", PublicKey: "PublicKeyID", Parameters: [:])
+        let wrongSharedSecret = try? security.calculateSharedSecret(PrivateKey: "PvKeyID2", PublicKey: "PublicKeyID", Parameters: [:])
+        XCTAssertNotEqual(sharedSecret1, wrongSharedSecret)
+    }
+    
+    func test_9_calculateShareSecrets_Data() {
+        let security = Security(KeycahinAccess: kSecAttrAccessibleAlways)
+        
+        let pubKey1Data: Data = security.getKey(ID: "PubKeyID1")!
+        let pubKey2Data: Data = security.getKey(ID: "PubKeyID2")!
+        let pvKey1Data: Data = security.getKey(ID: "PvKeyID1")!
+        let pvKey2Data: Data = security.getKey(ID: "PvKeyID2")!
+        
+        let sharedSecret1 = try? security.calculateSharedSecret(PrivateKey: pvKey1Data, PublicKey: pubKey2Data, Parameters: [:])
+        let sharedSecret2 = try? security.calculateSharedSecret(PrivateKey: pvKey2Data, PublicKey: pubKey1Data, Parameters: [:])
+        
+        XCTAssertNotNil(sharedSecret1 as Any)
+        XCTAssertNotNil(sharedSecret2 as Any)
+        XCTAssertEqual(sharedSecret1, sharedSecret2)
+        
+        let pubKeyWrongData: Data = security.getKey(ID: "PublicKeyID")!
+        let wrongSharedSecret = try? security.calculateSharedSecret(PrivateKey: pvKey2Data, PublicKey: pubKeyWrongData, Parameters: [:])
         XCTAssertNotEqual(sharedSecret1, wrongSharedSecret)
     }
 }
