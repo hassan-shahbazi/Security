@@ -2,4 +2,4 @@ language: swift
 osx_image: xcode9.1
 script:
         - xcodebuild -project SecurityWrapper.xcodeproj -scheme SecurityWrapper -configuration "Release" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-        - xcodebuild test -project SecurityWrapper.xcodeproj -scheme SecurityWrapperTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.4'
+        - xcodebuild test -project SecurityWrapper.xcodeproj -scheme SecurityWrapperTests -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.1'
