@@ -123,10 +123,10 @@ class SecurityWrapperTests: XCTestCase {
         
         XCTAssertNotNil(sharedSecret1 as Any)
         XCTAssertNotNil(sharedSecret2 as Any)
-        XCTAssertEqual(sharedSecret1, sharedSecret2)
+        XCTAssertEqual(sharedSecret1!, sharedSecret2!)
         
         let wrongSharedSecret = try? security.computeSharedSecret(privateKey: "PvKeyID2", publicKey: "PublicKeyID")
-        XCTAssertNotEqual(sharedSecret1, wrongSharedSecret)
+        XCTAssertNotEqual(sharedSecret1!, wrongSharedSecret!)
     }
     
     func test_J_calculateSharedSecrets_Data() {
@@ -142,11 +142,11 @@ class SecurityWrapperTests: XCTestCase {
         
         XCTAssertNotNil(sharedSecret1 as Any)
         XCTAssertNotNil(sharedSecret2 as Any)
-        XCTAssertEqual(sharedSecret1, sharedSecret2)
+        XCTAssertEqual(sharedSecret1!, sharedSecret2!)
         
         let pubKeyWrongData: Data = security.getKey(id: "PublicKeyID")!
         let wrongSharedSecret = try? security.computeSharedSecret(privateKey: pvKey2Data, publicKey: pubKeyWrongData)
-        XCTAssertNotEqual(sharedSecret1, wrongSharedSecret)
+        XCTAssertNotEqual(sharedSecret1!, wrongSharedSecret!)
     }
 }
 
