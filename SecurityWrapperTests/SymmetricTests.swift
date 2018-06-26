@@ -19,20 +19,20 @@ class SymmetricTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_1_generateSymmetricKey() {
-        let security = Symmetric(keychainAccess: kSecAttrAccessibleAlways)
+    func test_A_generateSymmetricKey() {
+        let security = Symmetric()
         let key = security.generateSymmetricKey(id: "AESKeyID")
         XCTAssertNotNil(key)
     }
     
-    func test_2_keyData() {
-        let security = Symmetric(keychainAccess: kSecAttrAccessibleAlways)
+    func test_B_keyData() {
+        let security = Symmetric()
         let AESKey = security.getKey(id: "AESKeyID")
         XCTAssertNotNil(AESKey)
     }
     
-    func test_3_encrypt() {
-        let security = Symmetric(keychainAccess: kSecAttrAccessibleAlways)
+    func test_C_encrypt() {
+        let security = Symmetric()
         
         let plain = "Hassan Shahbazi".data(using: .utf8)!
         let key = security.getKey(id: "AESKeyID")

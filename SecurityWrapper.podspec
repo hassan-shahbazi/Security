@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "SecurityWrapper"
   s.version      = "2.0.1"
-  s.summary      = "A very simple wrapper for common security implementations in iOS - Sign, Verify, Encrypt, Decrypt, and Deffie Helman."
+  s.summary      = "A very simple wrapper for common security implementations in iOS - Sign, Verify, Encrypt, Decrypt, and Diffie Hellman."
   s.source       = { :git => "https://github.com/Hassaniiii/Security.git", :branch => "master" }
 
   # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-    A very simple wrapper for common security implementations in iOS
+    A very simple wrapper for common security implementations in iOS, with Asymmetric and Symmetric algorithms and DH for the key agreement.
                    DESC
 
   s.homepage     = "http://vancosys.com"

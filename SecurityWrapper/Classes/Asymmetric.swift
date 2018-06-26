@@ -111,19 +111,19 @@ public class Asymmetric: NSObject {
         return nil
     }
     
-    public func calculateSharedSecret(privateKey: String, publicKey: String, algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, parameters: [String:Any] = [:]) throws -> Data? {
+    public func computeSharedSecret(privateKey: String, publicKey: String, algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, parameters: [String:Any] = [:]) throws -> Data? {
         if let pvKey: SecKey = self.getKey(id: privateKey) {
             if let pubKey: SecKey = self.getKey(id: publicKey) {
-                return try calculateSharedSecret(pvKey, pubKey, algo, parameters)
+                return try computeSharedSecret(pvKey, pubKey, algo, parameters)
             }
         }
         return nil
     }
     
-    public func calculateSharedSecret(privateKey: Data, publicKey: Data, algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, parameters: [String:Any] = [:]) throws -> Data? {
+    public func computeSharedSecret(privateKey: Data, publicKey: Data, algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, parameters: [String:Any] = [:]) throws -> Data? {
         if let pvKey: SecKey = self.dataToSecKey(privateKey: privateKey) {
             if let pubKey: SecKey = self.dataToSecKey(publicKey: publicKey) {
-                return try calculateSharedSecret(pvKey, pubKey, algo, parameters)
+                return try computeSharedSecret(pvKey, pubKey, algo, parameters)
             }
         }
         return nil
@@ -131,7 +131,7 @@ public class Asymmetric: NSObject {
 }
 
 extension Asymmetric {
-    private func calculateSharedSecret(_ privateKey: SecKey, _ publicKey: SecKey, _ algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, _ parameters: [String:Any]) throws -> Data? {
+    private func computeSharedSecret(_ privateKey: SecKey, _ publicKey: SecKey, _ algo: SecKeyAlgorithm = .ecdhKeyExchangeStandardX963SHA256, _ parameters: [String:Any]) throws -> Data? {
         
         var error: Unmanaged<CFError>?
         if let sharedSecret = SecKeyCopyKeyExchangeResult(privateKey, algo, publicKey, parameters as CFDictionary, &error) {

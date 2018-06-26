@@ -23,16 +23,16 @@ class SecurityWrapperTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_1_keyGeneration() {
-        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
+    func test_A_keyGeneration() {
+        let security = Asymmetric()
         let (pubKey, pKey) = security.generateKeyPair(publicKeyID: "PublicKeyID", privateKeyID: "PrivateKeyID")
         
         XCTAssertNotNil(pubKey)
         XCTAssertNotNil(pKey)
     }
     
-    func test_2_keyData() {
-        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
+    func test_B_keyData() {
+        let security = Asymmetric()
         let pubkey: Data? = security.getKey(id: "PublicKeyID")
         let pkey: Data? = security.getKey(id: "PrivateKeyID")
         
@@ -40,8 +40,8 @@ class SecurityWrapperTests: XCTestCase {
         XCTAssertNotNil(pkey)
     }
     
-    func test_3_keyRef() {
-        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
+    func test_C_keyRef() {
+        let security = Asymmetric()
         let pubkey: SecKey? = security.getKey(id: "PublicKeyID")
         let pkey: SecKey? = security.getKey(id: "PrivateKeyID")
         
@@ -49,8 +49,8 @@ class SecurityWrapperTests: XCTestCase {
         XCTAssertNotNil(pkey)
     }
     
-    func test_4_signData() {
-        let security = Asymmetric(signAlgo: .ecdsaSignatureDigestX962SHA512, keychainAccess: kSecAttrAccessibleAlways)
+    func test_D_signData() {
+        let security = Asymmetric(signAlgo: .ecdsaSignatureDigestX962SHA512)
         do {
             let sign = try security.sign(data: rawData, privateKeyID: "PrivateKeyID")
             XCTAssertNotNil(sign)
@@ -61,8 +61,8 @@ class SecurityWrapperTests: XCTestCase {
         }
     }
     
-    func test_5_verifySign() {
-        let security = Asymmetric(signAlgo: .ecdsaSignatureDigestX962SHA512, keychainAccess: kSecAttrAccessibleAlways)
+    func test_E_verifySign() {
+        let security = Asymmetric(signAlgo: .ecdsaSignatureDigestX962SHA512)
         do {
             let sign = try security.sign(data: rawData, privateKeyID: "PrivateKeyID")
             XCTAssertNotNil(sign)
@@ -76,8 +76,8 @@ class SecurityWrapperTests: XCTestCase {
         }
     }
     
-    func test_6_encrypt() {
-        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
+    func test_F_encrypt() {
+        let security = Asymmetric()
         do {
             let cipher = try security.encrypt(text: plainText, keyID: "PublicKeyID")
             
@@ -89,8 +89,8 @@ class SecurityWrapperTests: XCTestCase {
         }
     }
     
-    func test_7_decrypt() {
-        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
+    func test_G_decrypt() {
+        let security = Asymmetric()
         do {
             let cipher = try security.encrypt(text: plainText, keyID: "PublicKeyID")
             XCTAssertNotNil(cipher)
@@ -105,47 +105,47 @@ class SecurityWrapperTests: XCTestCase {
         }
     }
 
-    func test_8_generateKeyPairWithoutSaving() {
-        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
+    func test_H_generateKeyPairWithoutSaving() {
+        let security = Asymmetric()
         let (pubKey, pKey) = security.generateKeyPair()
     
         XCTAssertNotNil(pubKey)
         XCTAssertNotNil(pKey)
     }
 
-    func test_9_calculateShareSecrets_ID() {
-        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
+    func test_I_calculateSharedSecrets_ID() {
+        let security = Asymmetric()
         let _ = security.generateKeyPair(publicKeyID: "PubKeyID1", privateKeyID: "PvKeyID1")
         let _ = security.generateKeyPair(publicKeyID: "PubKeyID2", privateKeyID: "PvKeyID2")
         
-        let sharedSecret1 = try? security.calculateSharedSecret(privateKey: "PvKeyID1", publicKey: "PubKeyID2")
-        let sharedSecret2 = try? security.calculateSharedSecret(privateKey: "PvKeyID2", publicKey: "PubKeyID1")
+        let sharedSecret1 = try? security.computeSharedSecret(privateKey: "PvKeyID1", publicKey: "PubKeyID2")
+        let sharedSecret2 = try? security.computeSharedSecret(privateKey: "PvKeyID2", publicKey: "PubKeyID1")
         
         XCTAssertNotNil(sharedSecret1 as Any)
         XCTAssertNotNil(sharedSecret2 as Any)
         XCTAssertEqual(sharedSecret1, sharedSecret2)
         
-        let wrongSharedSecret = try? security.calculateSharedSecret(privateKey: "PvKeyID2", publicKey: "PublicKeyID")
+        let wrongSharedSecret = try? security.computeSharedSecret(privateKey: "PvKeyID2", publicKey: "PublicKeyID")
         XCTAssertNotEqual(sharedSecret1, wrongSharedSecret)
     }
     
-    func test_10_calculateShareSecrets_Data() {
-        let security = Asymmetric(keychainAccess: kSecAttrAccessibleAlways)
+    func test_J_calculateSharedSecrets_Data() {
+        let security = Asymmetric()
         
         let pubKey1Data: Data = security.getKey(id: "PubKeyID1")!
         let pubKey2Data: Data = security.getKey(id: "PubKeyID2")!
         let pvKey1Data: Data = security.getKey(id: "PvKeyID1")!
         let pvKey2Data: Data = security.getKey(id: "PvKeyID2")!
         
-        let sharedSecret1 = try? security.calculateSharedSecret(privateKey: pvKey1Data, publicKey: pubKey2Data)
-        let sharedSecret2 = try? security.calculateSharedSecret(privateKey: pvKey2Data, publicKey: pubKey1Data)
+        let sharedSecret1 = try? security.computeSharedSecret(privateKey: pvKey1Data, publicKey: pubKey2Data)
+        let sharedSecret2 = try? security.computeSharedSecret(privateKey: pvKey2Data, publicKey: pubKey1Data)
         
         XCTAssertNotNil(sharedSecret1 as Any)
         XCTAssertNotNil(sharedSecret2 as Any)
         XCTAssertEqual(sharedSecret1, sharedSecret2)
         
         let pubKeyWrongData: Data = security.getKey(id: "PublicKeyID")!
-        let wrongSharedSecret = try? security.calculateSharedSecret(privateKey: pvKey2Data, publicKey: pubKeyWrongData)
+        let wrongSharedSecret = try? security.computeSharedSecret(privateKey: pvKey2Data, publicKey: pubKeyWrongData)
         XCTAssertNotEqual(sharedSecret1, wrongSharedSecret)
     }
 }

@@ -1,102 +1,81 @@
 # Security
+![Build_Status](https://travis-ci.org/Hassaniiii/Security.svg?branch=master)
 ![cocoapods compatible](https://img.shields.io/badge/Cocoapods-compatible-4BC51D.svg?style=flat)
 ![Licence](https://img.shields.io/github/license/Hassaniiii/Security.svg)
 
-A very simple wrapper for common security implementations in iOS - Sign, Verify, Encrypt, Decrypt
+**SecurityWrapper** is a simple security framework letting you to use security functions with a few lines of code. It supports both Symmetric and Asymmetric algorithms, Signing and Verifying and key agreement using Diffie-Hellman algorithm.
 
 
 ## Installation
-`SecurityWrapper` is compatible with `cocoapods`. Just add the following line to your `Podfile`:
+`SecurityWrapper` is accessible on the `cocoapods`. Edit your project's `Podfile` and add following line to it:
 
 `pod 'SecurityWrapper'`
 
 ## Usage
-To learn how it work you can take a look at [SecurityWrapperTests.swift](https://github.com/Hassaniiii/Security/blob/master/SecurityWrapperTests/SecurityWrapperTests.swift) class.
+It consists of 3 main sections. Asymmetric, Symmetric, and Hashing. To find more examples and usages you can take a look at
+ [AsymmetricTests](https://github.com/Hassaniiii/Security/blob/master/SecurityWrapperTests/SecurityWrapperTests.swift), [SymmetricTests](https://github.com/Hassaniiii/Security/blob/master/SecurityWrapperTests/SymmetricTests.swift) and [HashingTests](https://github.com/Hassaniiii/Security/blob/master/SecurityWrapperTests/HashingTests.swift).
 
-### Key generation
+## Symmetric
+
+### Encrypt - Decrypt
 ```swift
-let security = Security()
-let (pubKey, pKey) = security.generateKeyPair(PublicKeyID: "PublicKeyID", PrivateKeyID: "PrivateKeyID")
+let security = Symmetric()
+let key = security.generateSymmetricKey(id: "AESKeyID")
+
+let cipher = security.encrypt(plain: plain, key: key!, iv: iv!)
+let plain = security.decrypt(cipher: cipher!, key: key!, iv: iv!)
 ```
 
-### Encryption
+## Asymmetric
 
+### Encrypt - Decrypt
 ```swift
-let security = Security()
-do {
-    let cipher = try security.encrypt(Plain: plainText, Key: "PublicKeyID")
-} catch let error {
-     print(error)
-}
+let security = Asymmetric()
+let (pubKey, pKey) = security.generateKeyPair(publicKeyID: "PublicKeyID", privateKeyID: "PrivateKeyID")
+
+let cipher = try? security.encrypt(text: plainText, keyID: "PublicKeyID")
+let plain = try? security.decrypt(cipher: cipher!, keyID: "PrivateKeyID")
 ```
 
-### Decryption
+### Signing - Verifying
 ```swift
-let security = Security()
-do {
-    let plain = try security.decrypt(Cipher: cipher!, Key: "PrivateKeyID")
-} catch let error {
-     print(error)
-}
+let security = Asymmetric(signAlgo: .ecdsaSignatureDigestX962SHA512)
+
+let sign = try? security.sign(data: rawData, privateKeyID: "PrivateKeyID")
+let verify = try? security.verify(rawData: rawData, signedData: sign!, publicKeyID: "PublicKeyID")
 ```
 
-### Key derivation
-*As a `Data` instance*
+### Key agreement (Diffie Hellman)
 ```swift
-let security = Security()
-let pubkey: Data? = security.getKey(ID: "PublicKeyID")
-let pkey: Data? = security.getKey(ID: "PrivateKeyID")
+let security = Asymmetric()
+let yourPrivateKey: Data = security.getKey(id: "PvKeyID1")!
+let peerPublicKey: Data = *Peer Public Key*
+
+let sharedSecret = try? security.computeSharedSecret(privateKey: yourPrivateKey, publicKey: peerPublicKey)
 ```
 
-*As a `SecKey` instance*
-```swift
-let security = Security()
-let pubkey: SecKey? = security.getKey(ID: "PublicKeyID")
-let pkey: SecKey? = security.getKey(ID: "PrivateKeyID")
-```
-
-### Signature generation
-```swift
-let security = Security()
-do {
-    let sign = try security.sign(Data: rawData, PrivateKey: "PrivateKeyID")
-} catch let error {
-     print(error)
-}
-```
-
-### Verify a signature
-```swift
-let security = Security()
-do {
-    let verify = try security.verify(RawData: rawData, SignedData: sign!, PublicKey: "PublicKeyID")
-} catch let error {
-     print(error)
-}
-```
-
-### Hash
+## Hash
 ```swift
 var hash = Hash(.MD5)
-let MD5 = hash.hash(Message: plainData)
+let MD5 = hash.hash(plainData)
 
 hash = Hash(.SHA256)
-let SHA256 = hash.hash(Message: plainData)
+let SHA256 = hash.hash(plainData)
 
 hash = Hash(.SHA512)
-let SHA512 = hash.hash(Message: plainData)
+let SHA512 = hash.hash(plainData)
 ```
 
-### HMAC
+## HMAC
 ```swift
 var hash = Hash(.SHA1)
-let HMAC1 = hash.hmac(Message: plainData, Key: plainKey)
+let HMAC1 = hash.hmac(message: plainData, key: plainKey)
 
 hash = Hash(.SHA256)
-let HMAC256 = hash.hmac(Message: plainData, Key: plainKey)
+let HMAC256 = hash.hmac(message: plainData, key: plainKey)
 
 hash = Hash(.SHA512)
-let HMAC512 = hash.hmac(Message: plainData, Key: plainKey)
+let HMAC512 = hash.hmac(message: plainData, key: plainKey)
 ```
 
 ## Contribution
@@ -115,7 +94,6 @@ Please ensure your pull request adheres to the following guidelines:
 Thank you for your suggestions!
 
 ## Authors
-
 * **Hassan Shahbazi** - [Hassaniiii](https://github.com/Hassaniiii)
 
 ## License
