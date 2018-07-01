@@ -56,7 +56,6 @@ class SecurityWrapperTests: XCTestCase {
             XCTAssertNotNil(sign)
         }
         catch let error {
-            print(error)
             XCTAssertFalse(true)
         }
     }
@@ -71,7 +70,6 @@ class SecurityWrapperTests: XCTestCase {
             XCTAssertTrue(verify)
         }
         catch let error {
-            print(error)
             XCTAssertFalse(true)
         }
     }
@@ -84,7 +82,6 @@ class SecurityWrapperTests: XCTestCase {
             XCTAssertNotNil(cipher)
         }
         catch let error {
-            print(error)
             XCTAssertFalse(true)
         }
     }
@@ -100,7 +97,6 @@ class SecurityWrapperTests: XCTestCase {
             XCTAssertEqual(plain, plainText)
         }
         catch let error {
-            print(error)
             XCTAssertFalse(true)
         }
     }

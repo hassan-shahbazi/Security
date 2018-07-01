@@ -92,8 +92,6 @@ class Keychain: NSObject {
                 contentsOfKeychain = String(data: retrievedData,
                                             encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))
             }
-        } else {
-            print("Nothing was retrieved from the keychain. Status code \(status)")
         }
         
         return contentsOfKeychain
