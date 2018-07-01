@@ -55,7 +55,7 @@ class SecurityWrapperTests: XCTestCase {
             let sign = try security.sign(data: rawData, privateKeyID: "PrivateKeyID")
             XCTAssertNotNil(sign)
         }
-        catch let error {
+        catch {
             XCTAssertFalse(true)
         }
     }
@@ -69,7 +69,7 @@ class SecurityWrapperTests: XCTestCase {
             let verify = try security.verify(rawData: rawData, signedData: sign!, publicKeyID: "PublicKeyID")
             XCTAssertTrue(verify)
         }
-        catch let error {
+        catch {
             XCTAssertFalse(true)
         }
     }
@@ -81,7 +81,7 @@ class SecurityWrapperTests: XCTestCase {
             
             XCTAssertNotNil(cipher)
         }
-        catch let error {
+        catch {
             XCTAssertFalse(true)
         }
     }
@@ -96,7 +96,7 @@ class SecurityWrapperTests: XCTestCase {
             XCTAssertNotNil(plain)
             XCTAssertEqual(plain, plainText)
         }
-        catch let error {
+        catch {
             XCTAssertFalse(true)
         }
     }
