@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CCommonCrypto
+import CommonCrypto
 
 public enum HashAlgorithm {
     case SHA1

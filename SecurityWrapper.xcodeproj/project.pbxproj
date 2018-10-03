@@ -75,7 +75,6 @@
 		5C6FCAFF20B155A30052FC23 /* SecurityWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityWrapperTests.swift; sourceTree = "<group>"; };
 		5C6FCB0120B155A30052FC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C6FCB1C20B15BE70052FC23 /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
-		5C6FCB2020B15BEC0052FC23 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		5C6FCB2F20B3F81C0052FC23 /* HashingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashingTests.swift; sourceTree = "<group>"; };
 		5C6FCB3B20B3FB630052FC23 /* SecurityWrapperSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecurityWrapperSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6FCB3D20B3FB630052FC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,7 +168,6 @@
 		5C6FCB1B20B15BCF0052FC23 /* CCommonCrypto */ = {
 			isa = PBXGroup;
 			children = (
-				5C6FCB2020B15BEC0052FC23 /* module.modulemap */,
 			);
 			path = CCommonCrypto;
 			sourceTree = "<group>";

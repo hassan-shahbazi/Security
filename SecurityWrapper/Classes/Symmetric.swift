@@ -8,7 +8,7 @@
 
 import UIKit
 import Security
-import CCommonCrypto
+import CommonCrypto
 
 public class Symmetric: NSObject {
     private var encAlgo:    Int!
