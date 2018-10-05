@@ -5,6 +5,13 @@
 
 **SecurityWrapper** is a simple security framework letting you to use security functions with a few lines of code. It supports both Symmetric and Asymmetric algorithms, Signing and Verifying and key agreement using Diffie-Hellman algorithm.
 
+## Requirements
+
+- Xcode 10
+    
+    Since **CommonCrypto** library has been available for Swift projects since xcode10, you'll need to checkout [**xcode9**](https://github.com/Hassaniiii/Security/tree/xcode9) branch if you want to use SecurityWrapper with earlier versions of xcode.
+
+- Swift 4.0+
 
 ## Installation
 `SecurityWrapper` is accessible on the `cocoapods`. Edit your project's `Podfile` and add following line to it:
