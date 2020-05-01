@@ -7,32 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C35352520D6889200294FDB /* SecurityWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; };
-		5C35352620D6889200294FDB /* SecurityWrapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5C35352F20D79F0E00294FDB /* SymmetricTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C35352E20D79F0E00294FDB /* SymmetricTests.swift */; };
-		5C35353120D7A99900294FDB /* Asymmetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C35353020D7A99900294FDB /* Asymmetric.swift */; };
-		5C35353320D7A9A200294FDB /* Symmetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C35353220D7A9A200294FDB /* Symmetric.swift */; };
-		5C35353520D7C12000294FDB /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C35353420D7C12000294FDB /* Keychain.swift */; };
 		5C6FCAF920B155A20052FC23 /* SecurityWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; };
 		5C6FCB0020B155A30052FC23 /* SecurityWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCAFF20B155A30052FC23 /* SecurityWrapperTests.swift */; };
 		5C6FCB0220B155A30052FC23 /* SecurityWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C6FCAF220B155A20052FC23 /* SecurityWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5C6FCB1E20B15BE80052FC23 /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB1C20B15BE70052FC23 /* Hash.swift */; };
 		5C6FCB3020B3F81C0052FC23 /* HashingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB2F20B3F81C0052FC23 /* HashingTests.swift */; };
 		5C6FCB3E20B3FB630052FC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB3D20B3FB630052FC23 /* AppDelegate.swift */; };
 		5C6FCB4020B3FB630052FC23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCB3F20B3FB630052FC23 /* ViewController.swift */; };
 		5C6FCB4320B3FB630052FC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6FCB4120B3FB630052FC23 /* Main.storyboard */; };
 		5C6FCB4520B3FB660052FC23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6FCB4420B3FB660052FC23 /* Assets.xcassets */; };
 		5C6FCB4820B3FB660052FC23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6FCB4620B3FB660052FC23 /* LaunchScreen.storyboard */; };
+		85D60A50245CD3AC00DE072C /* SecurityWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; };
+		85D60A51245CD3AC00DE072C /* SecurityWrapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		85D60A59245CD8D100DE072C /* Symmetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D60A55245CD8D100DE072C /* Symmetric.swift */; };
+		85D60A5A245CD8D100DE072C /* Asymmetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D60A56245CD8D100DE072C /* Asymmetric.swift */; };
+		85D60A5B245CD8D100DE072C /* Hash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D60A57245CD8D100DE072C /* Hash.swift */; };
+		85D60A5C245CD8D100DE072C /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D60A58245CD8D100DE072C /* Keychain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5C35352720D6889200294FDB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5C6124E6206A243A0089DF68 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5C6FCAEF20B155A10052FC23;
-			remoteInfo = SecurityWrapper;
-		};
 		5C6FCAFA20B155A20052FC23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5C6124E6206A243A0089DF68 /* Project object */;
@@ -47,16 +40,23 @@
 			remoteGlobalIDString = 5C6FCB3A20B3FB630052FC23;
 			remoteInfo = SecurityWrapperSample;
 		};
+		85D60A52245CD3AC00DE072C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C6124E6206A243A0089DF68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C6FCAEF20B155A10052FC23;
+			remoteInfo = SecurityWrapper;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5C35352920D6889200294FDB /* Embed Frameworks */ = {
+		85D60A54245CD3AC00DE072C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5C35352620D6889200294FDB /* SecurityWrapper.framework in Embed Frameworks */,
+				85D60A51245CD3AC00DE072C /* SecurityWrapper.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,16 +65,12 @@
 
 /* Begin PBXFileReference section */
 		5C35352E20D79F0E00294FDB /* SymmetricTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetricTests.swift; sourceTree = "<group>"; };
-		5C35353020D7A99900294FDB /* Asymmetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asymmetric.swift; sourceTree = "<group>"; };
-		5C35353220D7A9A200294FDB /* Symmetric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symmetric.swift; sourceTree = "<group>"; };
-		5C35353420D7C12000294FDB /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		5C6FCAF020B155A10052FC23 /* SecurityWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SecurityWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6FCAF220B155A20052FC23 /* SecurityWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecurityWrapper.h; sourceTree = "<group>"; };
 		5C6FCAF320B155A20052FC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C6FCAF820B155A20052FC23 /* SecurityWrapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecurityWrapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6FCAFF20B155A30052FC23 /* SecurityWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityWrapperTests.swift; sourceTree = "<group>"; };
 		5C6FCB0120B155A30052FC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C6FCB1C20B15BE70052FC23 /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hash.swift; sourceTree = "<group>"; };
 		5C6FCB2F20B3F81C0052FC23 /* HashingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashingTests.swift; sourceTree = "<group>"; };
 		5C6FCB3B20B3FB630052FC23 /* SecurityWrapperSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecurityWrapperSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6FCB3D20B3FB630052FC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +79,10 @@
 		5C6FCB4420B3FB660052FC23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C6FCB4720B3FB660052FC23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C6FCB4920B3FB660052FC23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85D60A55245CD8D100DE072C /* Symmetric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Symmetric.swift; path = Sources/Security/Symmetric.swift; sourceTree = SOURCE_ROOT; };
+		85D60A56245CD8D100DE072C /* Asymmetric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Asymmetric.swift; path = Sources/Security/Asymmetric.swift; sourceTree = SOURCE_ROOT; };
+		85D60A57245CD8D100DE072C /* Hash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hash.swift; path = Sources/Security/Hash.swift; sourceTree = SOURCE_ROOT; };
+		85D60A58245CD8D100DE072C /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = Sources/Security/Keychain.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C35352520D6889200294FDB /* SecurityWrapper.framework in Frameworks */,
+				85D60A50245CD3AC00DE072C /* SecurityWrapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +119,7 @@
 				5C6FCAF120B155A20052FC23 /* SecurityWrapper */,
 				5C6FCAFE20B155A30052FC23 /* SecurityWrapperTests */,
 				5C6124EF206A243A0089DF68 /* Products */,
+				85D60A4F245CD3AC00DE072C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,20 +157,12 @@
 		5C6FCB1A20B15BC90052FC23 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5C6FCB1B20B15BCF0052FC23 /* CCommonCrypto */,
-				5C6FCB1C20B15BE70052FC23 /* Hash.swift */,
-				5C35353020D7A99900294FDB /* Asymmetric.swift */,
-				5C35353220D7A9A200294FDB /* Symmetric.swift */,
-				5C35353420D7C12000294FDB /* Keychain.swift */,
+				85D60A56245CD8D100DE072C /* Asymmetric.swift */,
+				85D60A57245CD8D100DE072C /* Hash.swift */,
+				85D60A58245CD8D100DE072C /* Keychain.swift */,
+				85D60A55245CD8D100DE072C /* Symmetric.swift */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		5C6FCB1B20B15BCF0052FC23 /* CCommonCrypto */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CCommonCrypto;
 			sourceTree = "<group>";
 		};
 		5C6FCB3C20B3FB630052FC23 /* SecurityWrapperSample */ = {
@@ -183,6 +176,13 @@
 				5C6FCB4920B3FB660052FC23 /* Info.plist */,
 			);
 			path = SecurityWrapperSample;
+			sourceTree = "<group>";
+		};
+		85D60A4F245CD3AC00DE072C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,12 +243,12 @@
 				5C6FCB3720B3FB630052FC23 /* Sources */,
 				5C6FCB3820B3FB630052FC23 /* Frameworks */,
 				5C6FCB3920B3FB630052FC23 /* Resources */,
-				5C35352920D6889200294FDB /* Embed Frameworks */,
+				85D60A54245CD3AC00DE072C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5C35352820D6889200294FDB /* PBXTargetDependency */,
+				85D60A53245CD3AC00DE072C /* PBXTargetDependency */,
 			);
 			name = SecurityWrapperSample;
 			productName = SecurityWrapperSample;
@@ -333,10 +333,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C6FCB1E20B15BE80052FC23 /* Hash.swift in Sources */,
-				5C35353520D7C12000294FDB /* Keychain.swift in Sources */,
-				5C35353120D7A99900294FDB /* Asymmetric.swift in Sources */,
-				5C35353320D7A9A200294FDB /* Symmetric.swift in Sources */,
+				85D60A59245CD8D100DE072C /* Symmetric.swift in Sources */,
+				85D60A5C245CD8D100DE072C /* Keychain.swift in Sources */,
+				85D60A5A245CD8D100DE072C /* Asymmetric.swift in Sources */,
+				85D60A5B245CD8D100DE072C /* Hash.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,11 +362,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5C35352820D6889200294FDB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5C6FCAEF20B155A10052FC23 /* SecurityWrapper */;
-			targetProxy = 5C35352720D6889200294FDB /* PBXContainerItemProxy */;
-		};
 		5C6FCAFB20B155A20052FC23 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5C6FCAEF20B155A10052FC23 /* SecurityWrapper */;
@@ -376,6 +371,11 @@
 			isa = PBXTargetDependency;
 			target = 5C6FCB3A20B3FB630052FC23 /* SecurityWrapperSample */;
 			targetProxy = 5C6FCB5B20B3FB8A0052FC23 /* PBXContainerItemProxy */;
+		};
+		85D60A53245CD3AC00DE072C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C6FCAEF20B155A10052FC23 /* SecurityWrapper */;
+			targetProxy = 85D60A52245CD3AC00DE072C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -519,7 +519,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4A6ZQ29Y2F;
+				DEVELOPMENT_TEAM = 86P62K2K2N;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -527,9 +527,10 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vancosys.SecurityWrapper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hassaniiii.security;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/SecurityWrapper/Classes/CCommonCrypto";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -548,7 +549,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4A6ZQ29Y2F;
+				DEVELOPMENT_TEAM = 86P62K2K2N;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -556,9 +557,10 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vancosys.SecurityWrapper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hassaniiii.security;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/SecurityWrapper/Classes/CCommonCrypto";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -574,7 +576,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4A6ZQ29Y2F;
+				DEVELOPMENT_TEAM = 86P62K2K2N;
 				INFOPLIST_FILE = SecurityWrapperTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -594,7 +596,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4A6ZQ29Y2F;
+				DEVELOPMENT_TEAM = 86P62K2K2N;
 				INFOPLIST_FILE = SecurityWrapperTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -610,15 +612,14 @@
 		5C6FCB5620B3FB660052FC23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 92TDT63R6P;
+				DEVELOPMENT_TEAM = 86P62K2K2N;
 				INFOPLIST_FILE = SecurityWrapperSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vancosys.SecurityWrapperSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hassaniiii.security.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -628,15 +629,14 @@
 		5C6FCB5720B3FB660052FC23 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 92TDT63R6P;
+				DEVELOPMENT_TEAM = 86P62K2K2N;
 				INFOPLIST_FILE = SecurityWrapperSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vancosys.SecurityWrapperSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hassaniiii.security.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

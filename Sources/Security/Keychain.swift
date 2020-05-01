@@ -11,7 +11,7 @@ import Security
 
 // Constant Identifiers
 let userAccount = "AuthenticatedUser"
-let accessGroup = "SecuritySerivice"
+let accessGroup = "SecurityService"
 
 
 /**
