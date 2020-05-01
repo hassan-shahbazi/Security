@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SecurityWrapper"
-  s.version      = "2.1.0"
+  s.version      = "2.2.3"
   s.summary      = "A very simple wrapper for common security implementations in iOS - Sign, Verify, Encrypt, Decrypt, and Diffie Hellman."
   s.source       = { :git => "https://github.com/Hassaniiii/Security.git", :branch => "master" }
 
@@ -90,7 +90,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Sources/**/*.swift"
+  s.source_files  = "Classes", "Sources/SecurityWrapper/*.swift"
   s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
