@@ -6,7 +6,7 @@
 //  Copyright © 2018 Hassan Shahbazi. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Security
 
 public class Asymmetric: NSObject {

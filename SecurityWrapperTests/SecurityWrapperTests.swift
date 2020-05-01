@@ -113,16 +113,21 @@ class SecurityWrapperTests: XCTestCase {
         let security = Asymmetric()
         let _ = security.generateKeyPair(publicKeyID: "PubKeyID1", privateKeyID: "PvKeyID1")
         let _ = security.generateKeyPair(publicKeyID: "PubKeyID2", privateKeyID: "PvKeyID2")
-        
-        let sharedSecret1 = try? security.computeSharedSecret(privateKey: "PvKeyID1", publicKey: "PubKeyID2")
-        let sharedSecret2 = try? security.computeSharedSecret(privateKey: "PvKeyID2", publicKey: "PubKeyID1")
-        
-        XCTAssertNotNil(sharedSecret1 as Any)
-        XCTAssertNotNil(sharedSecret2 as Any)
-        XCTAssertEqual(sharedSecret1!, sharedSecret2!)
-        
-        let wrongSharedSecret = try? security.computeSharedSecret(privateKey: "PvKeyID2", publicKey: "PublicKeyID")
-        XCTAssertNotEqual(sharedSecret1!, wrongSharedSecret!)
+        let params = [SecKeyKeyExchangeParameter.requestedSize.rawValue: 32, SecKeyKeyExchangeParameter.sharedInfo.rawValue: Data()] as [String:Any]
+
+        do {
+            let sharedSecret1 = try security.computeSharedSecret(privateKey: "PvKeyID1", publicKey: "PubKeyID2", parameters: params)
+            let sharedSecret2 = try security.computeSharedSecret(privateKey: "PvKeyID2", publicKey: "PubKeyID1", parameters: params)
+            
+            XCTAssertNotNil(sharedSecret1 as Any)
+            XCTAssertNotNil(sharedSecret2 as Any)
+            XCTAssertEqual(sharedSecret1, sharedSecret2)
+            
+            let wrongSharedSecret = try? security.computeSharedSecret(privateKey: "PvKeyID2", publicKey: "PublicKeyID")
+            XCTAssertNotEqual(sharedSecret1, wrongSharedSecret)
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
     }
     
     func test_J_calculateSharedSecrets_Data() {
@@ -132,17 +137,18 @@ class SecurityWrapperTests: XCTestCase {
         let pubKey2Data: Data = security.getKey(id: "PubKeyID2")!
         let pvKey1Data: Data = security.getKey(id: "PvKeyID1")!
         let pvKey2Data: Data = security.getKey(id: "PvKeyID2")!
-        
-        let sharedSecret1 = try? security.computeSharedSecret(privateKey: pvKey1Data, publicKey: pubKey2Data)
-        let sharedSecret2 = try? security.computeSharedSecret(privateKey: pvKey2Data, publicKey: pubKey1Data)
+        let params = [SecKeyKeyExchangeParameter.requestedSize.rawValue: 32, SecKeyKeyExchangeParameter.sharedInfo.rawValue: Data()] as [String:Any]
+
+        let sharedSecret1 = try? security.computeSharedSecret(privateKey: pvKey1Data, publicKey: pubKey2Data, parameters: params)
+        let sharedSecret2 = try? security.computeSharedSecret(privateKey: pvKey2Data, publicKey: pubKey1Data, parameters: params)
         
         XCTAssertNotNil(sharedSecret1 as Any)
         XCTAssertNotNil(sharedSecret2 as Any)
-        XCTAssertEqual(sharedSecret1!, sharedSecret2!)
+        XCTAssertEqual(sharedSecret1, sharedSecret2)
         
         let pubKeyWrongData: Data = security.getKey(id: "PublicKeyID")!
         let wrongSharedSecret = try? security.computeSharedSecret(privateKey: pvKey2Data, publicKey: pubKeyWrongData)
-        XCTAssertNotEqual(sharedSecret1!, wrongSharedSecret!)
+        XCTAssertNotEqual(sharedSecret1, wrongSharedSecret)
     }
 }
 
